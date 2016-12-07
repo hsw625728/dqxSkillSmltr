@@ -19,9 +19,15 @@
 		5847E04F1DF7B7CB00995ABE /* DSSkillPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E04E1DF7B7CB00995ABE /* DSSkillPointViewController.m */; };
 		5847E0521DF7E66F00995ABE /* DSBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0511DF7E66F00995ABE /* DSBaseCell.m */; };
 		5847E0581DF7E7B000995ABE /* DSTableDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0571DF7E7B000995ABE /* DSTableDetailCell.m */; };
+		5847E05E1DF7F03200995ABE /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E05D1DF7F03200995ABE /* UIImage+Common.m */; };
+		5847E0611DF7FCD800995ABE /* DSTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0601DF7FCD800995ABE /* DSTableHeaderView.m */; };
+		5847E0641DF8005000995ABE /* DSSkillDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0631DF8005000995ABE /* DSSkillDetailItem.m */; };
+		EAE3AC85618B130CE7AE216A /* libPods-dqxSkillSmltr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0BDBCB92757387FC10ECA767 /* Pods-dqxSkillSmltr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dqxSkillSmltr.release.xcconfig"; path = "Pods/Target Support Files/Pods-dqxSkillSmltr/Pods-dqxSkillSmltr.release.xcconfig"; sourceTree = "<group>"; };
+		198A39D73A5F316988FBED67 /* Pods-dqxSkillSmltr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dqxSkillSmltr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dqxSkillSmltr/Pods-dqxSkillSmltr.debug.xcconfig"; sourceTree = "<group>"; };
 		5847E0151DF7B10E00995ABE /* dqxSkillSmltr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dqxSkillSmltr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5847E0191DF7B10E00995ABE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5847E01B1DF7B10E00995ABE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -46,6 +52,14 @@
 		5847E0571DF7E7B000995ABE /* DSTableDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableDetailCell.m; path = CustomViews/Base/DSTableDetailCell.m; sourceTree = "<group>"; };
 		5847E0591DF7EC5300995ABE /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Common/Headers/Constants.h; sourceTree = "<group>"; };
 		5847E05A1DF7EC9900995ABE /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Macros.h; path = Common/Headers/Macros.h; sourceTree = "<group>"; };
+		5847E05B1DF7EF5600995ABE /* dqxSkillSmltr.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dqxSkillSmltr.pch; sourceTree = "<group>"; };
+		5847E05C1DF7EFFC00995ABE /* UIImage+Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIImage+Common.h"; path = "Common/Plugin/UIImage+Common.h"; sourceTree = "<group>"; };
+		5847E05D1DF7F03200995ABE /* UIImage+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Common.m"; path = "Common/Plugin/UIImage+Common.m"; sourceTree = "<group>"; };
+		5847E05F1DF7FCC300995ABE /* DSTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSTableHeaderView.h; path = CustomViews/Base/DSTableHeaderView.h; sourceTree = "<group>"; };
+		5847E0601DF7FCD800995ABE /* DSTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableHeaderView.m; path = CustomViews/Base/DSTableHeaderView.m; sourceTree = "<group>"; };
+		5847E0621DF8004400995ABE /* DSSkillDetailItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSSkillDetailItem.h; path = Models/DSSkillDetailItem.h; sourceTree = "<group>"; };
+		5847E0631DF8005000995ABE /* DSSkillDetailItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSkillDetailItem.m; path = Models/DSSkillDetailItem.m; sourceTree = "<group>"; };
+		CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dqxSkillSmltr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,17 +67,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAE3AC85618B130CE7AE216A /* libPods-dqxSkillSmltr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3DB2EED422362A939C1C7BE1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				198A39D73A5F316988FBED67 /* Pods-dqxSkillSmltr.debug.xcconfig */,
+				0BDBCB92757387FC10ECA767 /* Pods-dqxSkillSmltr.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5847E00C1DF7B10E00995ABE = {
 			isa = PBXGroup;
 			children = (
 				5847E0171DF7B10E00995ABE /* dqxSkillSmltr */,
 				5847E0161DF7B10E00995ABE /* Products */,
+				3DB2EED422362A939C1C7BE1 /* Pods */,
+				E11B6DE65C888781723133B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				5847E0191DF7B10E00995ABE /* main.m */,
+				5847E05B1DF7EF5600995ABE /* dqxSkillSmltr.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -124,6 +151,8 @@
 		5847E0311DF7B18D00995ABE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5847E0621DF8004400995ABE /* DSSkillDetailItem.h */,
+				5847E0631DF8005000995ABE /* DSSkillDetailItem.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -133,8 +162,8 @@
 			children = (
 				5847E0371DF7B3E300995ABE /* Base */,
 				5847E0391DF7B41E00995ABE /* SkillPoint */,
-				5847E03A1DF7B43300995ABE /* SkillHistory */,
 				5847E0381DF7B3ED00995ABE /* SkillDetail */,
+				5847E03A1DF7B43300995ABE /* SkillHistory */,
 				5847E0331DF7B26100995ABE /* TabBar */,
 			);
 			name = ViewControllers;
@@ -192,6 +221,8 @@
 				5847E0511DF7E66F00995ABE /* DSBaseCell.m */,
 				5847E0561DF7E7A400995ABE /* DSTableDetailCell.h */,
 				5847E0571DF7E7B000995ABE /* DSTableDetailCell.m */,
+				5847E05F1DF7FCC300995ABE /* DSTableHeaderView.h */,
+				5847E0601DF7FCD800995ABE /* DSTableHeaderView.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -208,6 +239,8 @@
 		5847E03D1DF7B52A00995ABE /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
+				5847E05C1DF7EFFC00995ABE /* UIImage+Common.h */,
+				5847E05D1DF7F03200995ABE /* UIImage+Common.m */,
 			);
 			name = Plugin;
 			sourceTree = "<group>";
@@ -233,6 +266,14 @@
 			name = SkillHistory;
 			sourceTree = "<group>";
 		};
+		E11B6DE65C888781723133B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -240,9 +281,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5847E02C1DF7B10E00995ABE /* Build configuration list for PBXNativeTarget "dqxSkillSmltr" */;
 			buildPhases = (
+				D23CEB34734FA495150A1543 /* [CP] Check Pods Manifest.lock */,
 				5847E0111DF7B10E00995ABE /* Sources */,
 				5847E0121DF7B10E00995ABE /* Frameworks */,
 				5847E0131DF7B10E00995ABE /* Resources */,
+				F7B0F4E8ACBF016F5F1F2FD5 /* [CP] Embed Pods Frameworks */,
+				ECAD2410FF4AB3A60E66AD05 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -300,6 +344,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D23CEB34734FA495150A1543 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		ECAD2410FF4AB3A60E66AD05 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-dqxSkillSmltr/Pods-dqxSkillSmltr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7B0F4E8ACBF016F5F1F2FD5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-dqxSkillSmltr/Pods-dqxSkillSmltr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5847E0111DF7B10E00995ABE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -307,10 +399,13 @@
 			files = (
 				5847E0431DF7B71400995ABE /* DSSkillDetailViewController.m in Sources */,
 				5847E0581DF7E7B000995ABE /* DSTableDetailCell.m in Sources */,
+				5847E0641DF8005000995ABE /* DSSkillDetailItem.m in Sources */,
 				5847E0521DF7E66F00995ABE /* DSBaseCell.m in Sources */,
 				5847E04F1DF7B7CB00995ABE /* DSSkillPointViewController.m in Sources */,
+				5847E0611DF7FCD800995ABE /* DSTableHeaderView.m in Sources */,
 				5847E01D1DF7B10E00995ABE /* AppDelegate.m in Sources */,
 				5847E0461DF7B73E00995ABE /* DSTabBarController.m in Sources */,
+				5847E05E1DF7F03200995ABE /* UIImage+Common.m in Sources */,
 				5847E01A1DF7B10E00995ABE /* main.m in Sources */,
 				5847E04C1DF7B79F00995ABE /* DSSkillHistoryViewController.m in Sources */,
 				5847E0491DF7B76100995ABE /* DSBaseViewController.m in Sources */,
@@ -429,9 +524,13 @@
 		};
 		5847E02D1DF7B10E00995ABE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 198A39D73A5F316988FBED67 /* Pods-dqxSkillSmltr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 887CVK63XR;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = dqxSkillSmltr/dqxSkillSmltr.pch;
 				INFOPLIST_FILE = dqxSkillSmltr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -442,9 +541,13 @@
 		};
 		5847E02E1DF7B10E00995ABE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BDBCB92757387FC10ECA767 /* Pods-dqxSkillSmltr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 887CVK63XR;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = dqxSkillSmltr/dqxSkillSmltr.pch;
 				INFOPLIST_FILE = dqxSkillSmltr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -24,17 +24,17 @@
     self = [super init];
     if (self)
     {
-        DRCategoriesViewController *cateViewController = [[DRCategoriesViewController alloc] init];
+        DSSkillPointViewController *cateViewController = [[DSSkillPointViewController alloc] init];
         UINavigationController *cateNavigationController = [[UINavigationController alloc] initWithRootViewController:cateViewController];
-        cateNavigationController.title = DRCategories;
+        cateNavigationController.title = DSSkillPoint;
         
-        DRMaterailItemViewController *cateViewController1 = [[DRMaterailItemViewController alloc] init];
+        DSSkillDetailViewController *cateViewController1 = [[DSSkillDetailViewController alloc] init];
         UINavigationController *cateNavigationController1 = [[UINavigationController alloc] initWithRootViewController:cateViewController1];
-        cateNavigationController1.title = DRMaterialItem;
+        cateNavigationController1.title = DSSkillDetail;
         
-        DRRecipeHistoryViewController *cateViewController3 = [[DRRecipeHistoryViewController alloc] init];
+        DSSkillHistoryViewController *cateViewController3 = [[DSSkillHistoryViewController alloc] init];
         UINavigationController *cateNavigationController3 = [[UINavigationController alloc] initWithRootViewController:cateViewController3];
-        cateNavigationController3.title = DRRecipeHistory;
+        cateNavigationController3.title = DSSkillHistory;
         
         [self setViewControllers:@[cateNavigationController, cateNavigationController1, cateNavigationController3]];
         

@@ -161,7 +161,7 @@
 
 #pragma mark - Action
 - (void)recipeButtonClicked {
-    [self.navigationController pushViewController:[[DRSearchViewController alloc] init] animated:YES];
+    //[self.navigationController pushViewController:[[DRSearchViewController alloc] init] animated:YES];
 }
 
 @end

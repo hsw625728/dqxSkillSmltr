@@ -9,22 +9,22 @@
 #import <Foundation/Foundation.h>
 #import "DSSkillDetailViewController.h"
 #import "UIImage+Common.h"
-#import "DRRecipeCategoriesCell.h"
-#import "DRRecipeSearchItem.h"
-#import "DRRecipeSearchCell.h"
-#import "DRRecipeCategoriesHeaderView.h"
+//#import "DRRecipeCategoriesCell.h"
+#import "DSSkillDetailItem.h"
+#import "DSTableDetailCell.h"
+#import "DSTableHeaderView.h"
 #import "View+MASAdditions.h"
 
-@interface DRMaterailItemViewController() <UITableViewDataSource, UITableViewDelegate>
+@interface DSSkillDetailViewController() <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
 
-@implementation DRMaterailItemViewController{
+@implementation DSSkillDetailViewController{
     NSArray *sectionTitles;
     NSArray *rowTitles;
-    NSArray *rowImageNames;
+    //NSArray *rowImageNames;
     NSArray *rowPrice;
 }
 
@@ -44,7 +44,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.title = DRMaterialItem;
+    self.navigationItem.title = DSSkillDetail;
     
     [self setupViews];
     
@@ -58,24 +58,23 @@
 #pragma mark - Private Method
 
 - (void)initDatas {
-    sectionTitles = MATERIAL_ITEM;
-    rowTitles = MATERIAL_ITEM_NAMES;
-    rowImageNames = MATERIAL_ITEM_IMAGES;
-    rowPrice = MATERIAL_ITEM_PRICE;
+    sectionTitles = SKILL_DETAIL_SECTION;
+    rowTitles = SKILL_DETAIL_POTIN_AND_TITLE;
+    //rowImageNames = SKILL_DETAIL_ICON;
+    rowPrice = SKILL_DETAIL_DESC;
 }
 
 - (void)setupViews {
     _tableView = ({
         UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-        tableView.backgroundColor = DRViewControllerBGColor;
+        tableView.backgroundColor = DSViewControllerBGColor;
         tableView.dataSource = self;
         tableView.delegate = self;
         
-        [tableView registerClass:[DRRecipeCategoriesHeaderView class] forHeaderFooterViewReuseIdentifier:kDRRecipeCategoriesHeaderViewID];
-        [tableView registerClass:[DRRecipeSearchCell class] forCellReuseIdentifier:kDRRecipeSearchCellID];
-        //tableView.rowHeight = [DRRecipeCategoriesCell cellHeight];
-        tableView.rowHeight = [DRRecipeSearchCell cellHeight];
-        
+        [tableView registerClass:[DSTableHeaderView class] forHeaderFooterViewReuseIdentifier:kDSTableHeaderViewID];
+        [tableView registerClass:[DSTableDetailCell class] forCellReuseIdentifier:kDSTableDetailCellID];
+
+        tableView.rowHeight = [DSTableDetailCell cellHeight];
         
         
         [self.view addSubview:tableView];
@@ -105,13 +104,13 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DRRecipeSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:kDRRecipeSearchCellID forIndexPath:indexPath];
+    DSTableDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:kDSTableDetailCellID forIndexPath:indexPath];
     
-    DRRecipeSearchItem *model = [[DRRecipeSearchItem alloc] init];
+    DSSkillDetailItem *model = [[DSSkillDetailItem alloc] init];
     model.itemName = rowTitles[indexPath.section][indexPath.row];
     model.iconName = [NSString stringWithFormat:@"Icon-%@", model.itemName];
     model.itemMemo = rowPrice[indexPath.section][indexPath.row];
-    [(DRRecipeSearchCell *)cell configureCellWithSearchItem:(DRRecipeSearchItem *)model];
+    [(DSTableDetailCell *)cell configureCellWithSearchItem:(DSSkillDetailItem *)model];
     return cell;
 }
 
@@ -119,11 +118,11 @@
 #pragma mark UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return [DRRecipeCategoriesHeaderView viewHeight];
+    return [DSTableHeaderView viewHeight];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    DRRecipeCategoriesHeaderView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kDRRecipeCategoriesHeaderViewID];
+    DSTableHeaderView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kDSTableHeaderViewID];
     view.titleLabel.text = sectionTitles[section];
     
     return view;
@@ -136,10 +135,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
 }
-
-
-
 
 @end

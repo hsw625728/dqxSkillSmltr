@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "DSTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -23,10 +24,10 @@
     [_window makeKeyAndVisible];
     
     //设置导航栏的样式
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : DRNavigationBarTitleTextColor}];
-    [[UINavigationBar appearance] setTintColor:DRLightGrayTextColor];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : DSNavigationBarTitleTextColor}];
+    [[UINavigationBar appearance] setTintColor:DSLightGrayTextColor];
     //[[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setBarTintColor:DRNavigationBarTitleTextColor];
+    [[UINavigationBar appearance] setBarTintColor:DSNavigationBarTitleTextColor];
     
     
     _window.rootViewController = [[DSTabBarController alloc] init];

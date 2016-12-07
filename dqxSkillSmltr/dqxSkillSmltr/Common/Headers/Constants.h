@@ -29,9 +29,9 @@
 #define DSLightGrayTextColor [UIColor colorWithWhite:198 / 255.0 alpha:1]// #C6C6C6
 
 //Title
-#define DSCategories @"配方分类"
-#define DSMaterialItem @"素材列表"
-#define DSRecipeHistory @"近期浏览"
+#define DSSkillPoint @"加点模拟"
+#define DSSkillDetail @"特技列表"
+#define DSSkillHistory @"历史记录"
 
 // Hint
 #define BAD_NETWORK                             @"网络连接失败"

@@ -12,15 +12,14 @@
 
 FOUNDATION_EXPORT NSString *const kDSTableDetailCellID;
 
+@class DSSkillDetailItem;
+
 @interface DSTableDetailCell : DSBaseCell
 
 + (CGFloat)cellHeight;
 
-- (void)set:(NSString*)name iconName:(NSString*)icon neceNum:(NSString*)nec;
+- (void)configureCellWithSearchItem:(DSSkillDetailItem *)item;
 
-@property (strong, nonatomic) IBOutlet UILabel *nameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *neceNumLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *iconView;
 
 @end
 

@@ -8,41 +8,28 @@
 
 #import <Foundation/Foundation.h>
 #import "DSTableDetailCell.h"
+#import "DSSkillDetailItem.h"
 #import "View+MASAdditions.h"
 
-NSString *const kDSTableDetailCellID = @"DSTableDetailCellID";
+NSString *const kDSTableDetailCellID = @"kDSTableDetailCellID";
+
+@interface DSTableDetailCell ()
+
+@property (strong, nonatomic) UIImageView *coverView;
+@property (strong, nonatomic) UILabel *titleLabel;
+@property (strong, nonatomic) UILabel *contentLabel;
+
+@end
 
 @implementation DSTableDetailCell
 
+#pragma mark - Class Method
 
 + (CGFloat)cellHeight {
-    return DSTableViewHigh;
+    return 64;
 }
 
-- (void)prepareForReuse {
-    [super prepareForReuse];
-    _iconView.image = nil;
-}
-
-- (instancetype)init {
-    self = [super init];
-    
-    if (self) {
-        [self setupViews];
-    }
-    
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    
-    if (self) {
-        [self setupViews];
-    }
-    
-    return self;
-}
+#pragma mark - View Lifecycle
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -54,92 +41,71 @@ NSString *const kDSTableDetailCellID = @"DSTableDetailCellID";
     return self;
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    _coverView.image = nil;
+}
+
+#pragma mark - Private Method
+
 - (void)setupViews {
-    if (_iconView) {
+    if (_coverView) {
         return;
     }
     
-    self.backgroundColor = [UIColor whiteColor];
+    self.accessoryType = UITableViewCellAccessoryNone;
     self.contentView.backgroundColor = [UIColor whiteColor];
     
-    _iconView = ({
+    _coverView = ({
         UIImageView *imageView = [UIImageView new];
-        imageView.contentMode = UIViewContentModeCenter;
+        imageView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.height.equalTo(@DSTableViewHigh);
-            make.top.left.equalTo(self.contentView);
+            make.size.sizeOffset(CGSizeMake(48, 48));
+            make.centerY.equalTo(self.contentView);
+            make.left.equalTo(self.contentView).offset(8);
         }];
         
         imageView;
     });
     
-    _nameLabel = ({
+    _titleLabel = ({
         UILabel *label = [UILabel new];
-        label.font = FontWithSize(14);
-        label.textColor = [UIColor colorWithWhite:72 / 255.0 alpha:1];// #484848
+        label.backgroundColor = [UIColor whiteColor];
+        label.font = FontWithSize(13);
+        label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.contentView);
-            make.left.equalTo(_iconView.mas_right).offset(8);
+            make.top.equalTo(_coverView);
+            make.left.equalTo(_coverView.mas_right).offset(8);
+            make.right.equalTo(self.contentView);
         }];
         
         label;
     });
     
-    
-    _neceNumLabel = ({
+    _contentLabel = ({
         UILabel *label = [UILabel new];
-        label.font = FontWithSize(14);
-        label.textColor = [UIColor colorWithWhite:72 / 255.0 alpha:1];// #484848
+        label.backgroundColor = [UIColor whiteColor];
+        label.font = FontWithSize(13);
+        label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.contentView);
-            make.left.equalTo(self.contentView.mas_right).offset(-60);
+            make.left.right.equalTo(_titleLabel);
+            make.bottom.equalTo(_coverView);
         }];
         
         label;
     });
-    
-    
 }
 
+#pragma mark - Public Method
 
-- (void)awakeFromNib
-{
-    
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
-}
-
-+ (float)baseHeight
-{
-    return 62 - [DRDetailMaterialCell storageHeight];
-}
-+ (float)storageHeight
-{
-    return 18;
-}
-
-+ (float)calcHeight:(NSDictionary*)dic
-{
-    NSArray *storageList = [dic objectForKey:@"storageList"];
-    int storageNum = 0;
-    if( !ISNULL(storageList) ) storageNum = (int)[storageList count];
-    return [DRDetailMaterialCell baseHeight] + [DRDetailMaterialCell storageHeight]*storageNum;
-}
-
-- (void)set:(NSString*)name iconName:(NSString*)icon neceNum:(NSString*)nec
-{
-    self.nameLabel.text     = name;
-    self.neceNumLabel.text  = [NSString stringWithFormat:@"%@个", nec];
-    
-    self.iconView.image = [UIImage imageNamed:icon];
+- (void)configureCellWithSearchItem:(DSSkillDetailItem *)item {
+    //[_coverView mlb_sd_setImageWithURL:@"section2"/*item.iconName*/ placeholderImageName:@"section1"];
+    _coverView.image = [UIImage imageNamed:item.iconName];
+    _titleLabel.text = item.itemName;
+    _contentLabel.text = item.itemMemo;
 }
 
 @end
