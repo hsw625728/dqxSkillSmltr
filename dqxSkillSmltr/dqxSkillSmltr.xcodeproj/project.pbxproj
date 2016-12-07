@@ -22,6 +22,8 @@
 		5847E05E1DF7F03200995ABE /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E05D1DF7F03200995ABE /* UIImage+Common.m */; };
 		5847E0611DF7FCD800995ABE /* DSTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0601DF7FCD800995ABE /* DSTableHeaderView.m */; };
 		5847E0641DF8005000995ABE /* DSSkillDetailItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0631DF8005000995ABE /* DSSkillDetailItem.m */; };
+		5847E0671DF80D0500995ABE /* DSTableSkillPointCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0661DF80D0500995ABE /* DSTableSkillPointCell.m */; };
+		5847E06D1DF80DE300995ABE /* DSTableSkillPointCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E06B1DF80DE300995ABE /* DSTableSkillPointCellItem.m */; };
 		EAE3AC85618B130CE7AE216A /* libPods-dqxSkillSmltr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,10 @@
 		5847E0601DF7FCD800995ABE /* DSTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableHeaderView.m; path = CustomViews/Base/DSTableHeaderView.m; sourceTree = "<group>"; };
 		5847E0621DF8004400995ABE /* DSSkillDetailItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSSkillDetailItem.h; path = Models/DSSkillDetailItem.h; sourceTree = "<group>"; };
 		5847E0631DF8005000995ABE /* DSSkillDetailItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSkillDetailItem.m; path = Models/DSSkillDetailItem.m; sourceTree = "<group>"; };
+		5847E0651DF80CF400995ABE /* DSTableSkillPointCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSTableSkillPointCell.h; path = CustomViews/SkillPoint/DSTableSkillPointCell.h; sourceTree = "<group>"; };
+		5847E0661DF80D0500995ABE /* DSTableSkillPointCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableSkillPointCell.m; path = CustomViews/SkillPoint/DSTableSkillPointCell.m; sourceTree = "<group>"; };
+		5847E06B1DF80DE300995ABE /* DSTableSkillPointCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableSkillPointCellItem.m; path = Models/DSTableSkillPointCellItem.m; sourceTree = "<group>"; };
+		5847E06C1DF80DE300995ABE /* DSTableSkillPointCellItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSTableSkillPointCellItem.h; path = Models/DSTableSkillPointCellItem.h; sourceTree = "<group>"; };
 		CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dqxSkillSmltr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -151,6 +157,8 @@
 		5847E0311DF7B18D00995ABE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5847E06B1DF80DE300995ABE /* DSTableSkillPointCellItem.m */,
+				5847E06C1DF80DE300995ABE /* DSTableSkillPointCellItem.h */,
 				5847E0621DF8004400995ABE /* DSSkillDetailItem.h */,
 				5847E0631DF8005000995ABE /* DSSkillDetailItem.m */,
 			);
@@ -248,6 +256,8 @@
 		5847E0531DF7E6E100995ABE /* SkillPoint */ = {
 			isa = PBXGroup;
 			children = (
+				5847E0651DF80CF400995ABE /* DSTableSkillPointCell.h */,
+				5847E0661DF80D0500995ABE /* DSTableSkillPointCell.m */,
 			);
 			name = SkillPoint;
 			sourceTree = "<group>";
@@ -400,6 +410,7 @@
 				5847E0431DF7B71400995ABE /* DSSkillDetailViewController.m in Sources */,
 				5847E0581DF7E7B000995ABE /* DSTableDetailCell.m in Sources */,
 				5847E0641DF8005000995ABE /* DSSkillDetailItem.m in Sources */,
+				5847E06D1DF80DE300995ABE /* DSTableSkillPointCellItem.m in Sources */,
 				5847E0521DF7E66F00995ABE /* DSBaseCell.m in Sources */,
 				5847E04F1DF7B7CB00995ABE /* DSSkillPointViewController.m in Sources */,
 				5847E0611DF7FCD800995ABE /* DSTableHeaderView.m in Sources */,
@@ -407,6 +418,7 @@
 				5847E0461DF7B73E00995ABE /* DSTabBarController.m in Sources */,
 				5847E05E1DF7F03200995ABE /* UIImage+Common.m in Sources */,
 				5847E01A1DF7B10E00995ABE /* main.m in Sources */,
+				5847E0671DF80D0500995ABE /* DSTableSkillPointCell.m in Sources */,
 				5847E04C1DF7B79F00995ABE /* DSSkillHistoryViewController.m in Sources */,
 				5847E0491DF7B76100995ABE /* DSBaseViewController.m in Sources */,
 			);

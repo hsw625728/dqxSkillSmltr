@@ -10,6 +10,7 @@
 #define Constants_h
 #pragma mark - UISize
 #define DSTableViewHigh 48
+#define DSTableIconWidth 48
 
 #pragma mark - UIColor
 

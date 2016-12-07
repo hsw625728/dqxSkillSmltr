@@ -1,5 +1,5 @@
 //
-//  DSSkillDetailItem.m
+//  DSTableSkillPointCellItem.m
 //  dqxSkillSmltr
 //
 //  Created by HANSHAOWEN on 16/12/7.
@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DSSkillDetailItem.h"
+#import "DSTableSkillPointCellItem.h"
 
-@implementation DSSkillDetailItem{
+@implementation DSTableSkillPointCellItem{
     
 }
 
