@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		5847E01A1DF7B10E00995ABE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0191DF7B10E00995ABE /* main.m */; };
 		5847E01D1DF7B10E00995ABE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E01C1DF7B10E00995ABE /* AppDelegate.m */; };
-		5847E0201DF7B10E00995ABE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E01F1DF7B10E00995ABE /* ViewController.m */; };
 		5847E0231DF7B10E00995ABE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5847E0211DF7B10E00995ABE /* Main.storyboard */; };
 		5847E0251DF7B10E00995ABE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5847E0241DF7B10E00995ABE /* Assets.xcassets */; };
 		5847E0281DF7B10E00995ABE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5847E0261DF7B10E00995ABE /* LaunchScreen.storyboard */; };
-		5847E0361DF7B29E00995ABE /* DRTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0341DF7B29E00995ABE /* DRTabBarController.m */; };
+		5847E0431DF7B71400995ABE /* DSSkillDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0421DF7B71400995ABE /* DSSkillDetailViewController.m */; };
+		5847E0461DF7B73E00995ABE /* DSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0441DF7B73E00995ABE /* DSTabBarController.m */; };
+		5847E0491DF7B76100995ABE /* DSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0471DF7B76100995ABE /* DSBaseViewController.m */; };
+		5847E04C1DF7B79F00995ABE /* DSSkillHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E04B1DF7B79F00995ABE /* DSSkillHistoryViewController.m */; };
+		5847E04F1DF7B7CB00995ABE /* DSSkillPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E04E1DF7B7CB00995ABE /* DSSkillPointViewController.m */; };
+		5847E0521DF7E66F00995ABE /* DSBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0511DF7E66F00995ABE /* DSBaseCell.m */; };
+		5847E0581DF7E7B000995ABE /* DSTableDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0571DF7E7B000995ABE /* DSTableDetailCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +26,26 @@
 		5847E0191DF7B10E00995ABE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5847E01B1DF7B10E00995ABE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5847E01C1DF7B10E00995ABE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5847E01E1DF7B10E00995ABE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5847E01F1DF7B10E00995ABE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5847E0221DF7B10E00995ABE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5847E0241DF7B10E00995ABE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5847E0271DF7B10E00995ABE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5847E0291DF7B10E00995ABE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5847E0341DF7B29E00995ABE /* DRTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DRTabBarController.m; path = ViewControllers/TabBar/DRTabBarController.m; sourceTree = "<group>"; };
-		5847E0351DF7B29E00995ABE /* DRTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DRTabBarController.h; path = ViewControllers/TabBar/DRTabBarController.h; sourceTree = "<group>"; };
+		5847E0411DF7B6FD00995ABE /* DSSkillDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSSkillDetailViewController.h; path = ViewControllers/SkillDetail/DSSkillDetailViewController.h; sourceTree = "<group>"; };
+		5847E0421DF7B71400995ABE /* DSSkillDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSkillDetailViewController.m; path = ViewControllers/SkillDetail/DSSkillDetailViewController.m; sourceTree = "<group>"; };
+		5847E0441DF7B73E00995ABE /* DSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTabBarController.m; path = ViewControllers/TabBar/DSTabBarController.m; sourceTree = "<group>"; };
+		5847E0451DF7B73E00995ABE /* DSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSTabBarController.h; path = ViewControllers/TabBar/DSTabBarController.h; sourceTree = "<group>"; };
+		5847E0471DF7B76100995ABE /* DSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBaseViewController.m; path = ViewControllers/Base/DSBaseViewController.m; sourceTree = "<group>"; };
+		5847E0481DF7B76100995ABE /* DSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSBaseViewController.h; path = ViewControllers/Base/DSBaseViewController.h; sourceTree = "<group>"; };
+		5847E04A1DF7B79200995ABE /* DSSkillHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSSkillHistoryViewController.h; path = ViewControllers/SkillHistory/DSSkillHistoryViewController.h; sourceTree = "<group>"; };
+		5847E04B1DF7B79F00995ABE /* DSSkillHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSkillHistoryViewController.m; path = ViewControllers/SkillHistory/DSSkillHistoryViewController.m; sourceTree = "<group>"; };
+		5847E04D1DF7B7BD00995ABE /* DSSkillPointViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSSkillPointViewController.h; path = ViewControllers/SkillPoint/DSSkillPointViewController.h; sourceTree = "<group>"; };
+		5847E04E1DF7B7CB00995ABE /* DSSkillPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSkillPointViewController.m; path = ViewControllers/SkillPoint/DSSkillPointViewController.m; sourceTree = "<group>"; };
+		5847E0501DF7E65E00995ABE /* DSBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSBaseCell.h; path = CustomViews/Base/DSBaseCell.h; sourceTree = "<group>"; };
+		5847E0511DF7E66F00995ABE /* DSBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBaseCell.m; path = CustomViews/Base/DSBaseCell.m; sourceTree = "<group>"; };
+		5847E0561DF7E7A400995ABE /* DSTableDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSTableDetailCell.h; path = CustomViews/Base/DSTableDetailCell.h; sourceTree = "<group>"; };
+		5847E0571DF7E7B000995ABE /* DSTableDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableDetailCell.m; path = CustomViews/Base/DSTableDetailCell.m; sourceTree = "<group>"; };
+		5847E0591DF7EC5300995ABE /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Common/Headers/Constants.h; sourceTree = "<group>"; };
+		5847E05A1DF7EC9900995ABE /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Macros.h; path = Common/Headers/Macros.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,14 +78,12 @@
 		5847E0171DF7B10E00995ABE /* dqxSkillSmltr */ = {
 			isa = PBXGroup;
 			children = (
-				5847E0321DF7B19600995ABE /* ViewControllers */,
 				5847E0311DF7B18D00995ABE /* Models */,
 				5847E0301DF7B18500995ABE /* CustomViews */,
 				5847E02F1DF7B17900995ABE /* Common */,
+				5847E0321DF7B19600995ABE /* ViewControllers */,
 				5847E01B1DF7B10E00995ABE /* AppDelegate.h */,
 				5847E01C1DF7B10E00995ABE /* AppDelegate.m */,
-				5847E01E1DF7B10E00995ABE /* ViewController.h */,
-				5847E01F1DF7B10E00995ABE /* ViewController.m */,
 				5847E0211DF7B10E00995ABE /* Main.storyboard */,
 				5847E0241DF7B10E00995ABE /* Assets.xcassets */,
 				5847E0261DF7B10E00995ABE /* LaunchScreen.storyboard */,
@@ -89,6 +104,8 @@
 		5847E02F1DF7B17900995ABE /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				5847E03D1DF7B52A00995ABE /* Plugin */,
+				5847E03C1DF7B50F00995ABE /* Headers */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -96,6 +113,10 @@
 		5847E0301DF7B18500995ABE /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				5847E0531DF7E6E100995ABE /* SkillPoint */,
+				5847E0551DF7E6FA00995ABE /* SkillHistory */,
+				5847E0541DF7E6F000995ABE /* SkillDetail */,
+				5847E03B1DF7B47100995ABE /* Base */,
 			);
 			name = CustomViews;
 			sourceTree = "<group>";
@@ -110,6 +131,10 @@
 		5847E0321DF7B19600995ABE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5847E0371DF7B3E300995ABE /* Base */,
+				5847E0391DF7B41E00995ABE /* SkillPoint */,
+				5847E03A1DF7B43300995ABE /* SkillHistory */,
+				5847E0381DF7B3ED00995ABE /* SkillDetail */,
 				5847E0331DF7B26100995ABE /* TabBar */,
 			);
 			name = ViewControllers;
@@ -118,10 +143,94 @@
 		5847E0331DF7B26100995ABE /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				5847E0341DF7B29E00995ABE /* DRTabBarController.m */,
-				5847E0351DF7B29E00995ABE /* DRTabBarController.h */,
+				5847E0441DF7B73E00995ABE /* DSTabBarController.m */,
+				5847E0451DF7B73E00995ABE /* DSTabBarController.h */,
 			);
 			name = TabBar;
+			sourceTree = "<group>";
+		};
+		5847E0371DF7B3E300995ABE /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5847E0471DF7B76100995ABE /* DSBaseViewController.m */,
+				5847E0481DF7B76100995ABE /* DSBaseViewController.h */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		5847E0381DF7B3ED00995ABE /* SkillDetail */ = {
+			isa = PBXGroup;
+			children = (
+				5847E0411DF7B6FD00995ABE /* DSSkillDetailViewController.h */,
+				5847E0421DF7B71400995ABE /* DSSkillDetailViewController.m */,
+			);
+			name = SkillDetail;
+			sourceTree = "<group>";
+		};
+		5847E0391DF7B41E00995ABE /* SkillPoint */ = {
+			isa = PBXGroup;
+			children = (
+				5847E04D1DF7B7BD00995ABE /* DSSkillPointViewController.h */,
+				5847E04E1DF7B7CB00995ABE /* DSSkillPointViewController.m */,
+			);
+			name = SkillPoint;
+			sourceTree = "<group>";
+		};
+		5847E03A1DF7B43300995ABE /* SkillHistory */ = {
+			isa = PBXGroup;
+			children = (
+				5847E04A1DF7B79200995ABE /* DSSkillHistoryViewController.h */,
+				5847E04B1DF7B79F00995ABE /* DSSkillHistoryViewController.m */,
+			);
+			name = SkillHistory;
+			sourceTree = "<group>";
+		};
+		5847E03B1DF7B47100995ABE /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5847E0501DF7E65E00995ABE /* DSBaseCell.h */,
+				5847E0511DF7E66F00995ABE /* DSBaseCell.m */,
+				5847E0561DF7E7A400995ABE /* DSTableDetailCell.h */,
+				5847E0571DF7E7B000995ABE /* DSTableDetailCell.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		5847E03C1DF7B50F00995ABE /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				5847E0591DF7EC5300995ABE /* Constants.h */,
+				5847E05A1DF7EC9900995ABE /* Macros.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		5847E03D1DF7B52A00995ABE /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Plugin;
+			sourceTree = "<group>";
+		};
+		5847E0531DF7E6E100995ABE /* SkillPoint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SkillPoint;
+			sourceTree = "<group>";
+		};
+		5847E0541DF7E6F000995ABE /* SkillDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SkillDetail;
+			sourceTree = "<group>";
+		};
+		5847E0551DF7E6FA00995ABE /* SkillHistory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SkillHistory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,10 +305,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5847E0201DF7B10E00995ABE /* ViewController.m in Sources */,
-				5847E0361DF7B29E00995ABE /* DRTabBarController.m in Sources */,
+				5847E0431DF7B71400995ABE /* DSSkillDetailViewController.m in Sources */,
+				5847E0581DF7E7B000995ABE /* DSTableDetailCell.m in Sources */,
+				5847E0521DF7E66F00995ABE /* DSBaseCell.m in Sources */,
+				5847E04F1DF7B7CB00995ABE /* DSSkillPointViewController.m in Sources */,
 				5847E01D1DF7B10E00995ABE /* AppDelegate.m in Sources */,
+				5847E0461DF7B73E00995ABE /* DSTabBarController.m in Sources */,
 				5847E01A1DF7B10E00995ABE /* main.m in Sources */,
+				5847E04C1DF7B79F00995ABE /* DSSkillHistoryViewController.m in Sources */,
+				5847E0491DF7B76100995ABE /* DSBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +472,7 @@
 				5847E02E1DF7B10E00995ABE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

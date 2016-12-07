@@ -1,5 +1,5 @@
 //
-//  DRTabBarControllers.m
+//  DSTabBarControllers.m
 //  dqxRecipe
 //
 //  Created by SHAOWENn HAN on 16/11/23.
@@ -7,20 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "DRTabBarController.h"
-#import "DRCategoriesViewController.h"
-#import "DRSubCategoriesViewController.h"
-#import "DRSearchViewController.h"
-#import "DRMaterialIemViewController.h"
-#import "DRRecipeHistoryViewController.h"
+#import "DSTabBarController.h"
+#import "DSSkillPointViewController.h"
+#import "DSSkillHistoryViewController.h"
+#import "DSSkillDetailViewController.h"
 
 
-@interface DRTabBarController ()
+@interface DSTabBarController ()
 
 @end
 
 
-@implementation DRTabBarController
+@implementation DSTabBarController
 
 -(instancetype) init{
     self = [super init];

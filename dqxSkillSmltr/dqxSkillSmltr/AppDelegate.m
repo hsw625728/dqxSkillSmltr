@@ -17,6 +17,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //创建主窗口
+    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    _window.backgroundColor = [UIColor whiteColor];
+    [_window makeKeyAndVisible];
+    
+    //设置导航栏的样式
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : DRNavigationBarTitleTextColor}];
+    [[UINavigationBar appearance] setTintColor:DRLightGrayTextColor];
+    //[[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBarTintColor:DRNavigationBarTitleTextColor];
+    
+    
+    _window.rootViewController = [[DSTabBarController alloc] init];
     return YES;
 }
 
