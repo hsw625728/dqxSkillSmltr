@@ -230,10 +230,17 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
 #pragma mark - Public Method
 
 - (void)configureCellWithSearchItem:(DSTableSkillPointCellItem *)item {
-    //[_coverView mlb_sd_setImageWithURL:@"section2"/*item.iconName*/ placeholderImageName:@"section1"];
     _coverView.image = [UIImage imageNamed:item.iconName];
-    _titleLabel.text = item.itemName;
-    _contentLabel.text = item.itemMemo;
+    _labelSkillType1.text = item.skillType1;
+    _labelSkillType2.text = item.skillType2;
+    _labelSkillType3.text = item.skillType3;
+    _labelSkillType4.text = item.skillType4;
+    _labelSkillType5.text = item.skillType5;
+    _labelSkillPoint1.text = item.skillPoint1;
+    _labelSkillPoint2.text = item.skillPoint2;
+    _labelSkillPoint3.text = item.skillPoint3;
+    _labelSkillPoint4.text = item.skillPoint4;
+    _labelSkillPoint5.text = item.skillPoint5;
 }
 
 @end

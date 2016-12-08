@@ -11,9 +11,18 @@
 
 @interface DSTableSkillPointCellItem : NSObject
 
-@property (nonatomic, copy) NSString *itemName;
+@property (nonatomic, copy) NSString *jobName;
 @property (nonatomic, copy) NSString *iconName;
-@property (nonatomic, copy) NSString *itemMemo;
+@property (nonatomic, copy) NSString *skillType1;
+@property (nonatomic, copy) NSString *skillType2;
+@property (nonatomic, copy) NSString *skillType3;
+@property (nonatomic, copy) NSString *skillType4;
+@property (nonatomic, copy) NSString *skillType5;
+@property (nonatomic, copy) NSString *skillPoint1;
+@property (nonatomic, copy) NSString *skillPoint2;
+@property (nonatomic, copy) NSString *skillPoint3;
+@property (nonatomic, copy) NSString *skillPoint4;
+@property (nonatomic, copy) NSString *skillPoint5;
 
 @end
 
