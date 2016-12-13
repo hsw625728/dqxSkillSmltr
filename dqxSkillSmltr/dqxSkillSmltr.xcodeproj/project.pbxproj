@@ -32,6 +32,7 @@
 		5847E0851DFE980300995ABE /* DZNSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0841DFE980300995ABE /* DZNSegmentedControl.m */; };
 		5847E0881DFE9E7500995ABE /* DSTableSkillPointSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0871DFE9E7500995ABE /* DSTableSkillPointSettingCell.m */; };
 		5847E08B1DFEC6C500995ABE /* DSGlobalJobInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E08A1DFEC6C500995ABE /* DSGlobalJobInfo.m */; };
+		58D40C2A1DFFB79700F9A520 /* DSGlobalSkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D40C291DFFB79700F9A520 /* DSGlobalSkillInfo.m */; };
 		EAE3AC85618B130CE7AE216A /* libPods-dqxSkillSmltr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,8 @@
 		5847E0871DFE9E7500995ABE /* DSTableSkillPointSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableSkillPointSettingCell.m; path = CustomViews/SkillPoint/DSTableSkillPointSettingCell.m; sourceTree = "<group>"; };
 		5847E0891DFEC6B700995ABE /* DSGlobalJobInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSGlobalJobInfo.h; path = Models/DSGlobalJobInfo.h; sourceTree = "<group>"; };
 		5847E08A1DFEC6C500995ABE /* DSGlobalJobInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSGlobalJobInfo.m; path = Models/DSGlobalJobInfo.m; sourceTree = "<group>"; };
+		58D40C281DFFB77300F9A520 /* DSGlobalSkillInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSGlobalSkillInfo.h; path = Models/DSGlobalSkillInfo.h; sourceTree = "<group>"; };
+		58D40C291DFFB79700F9A520 /* DSGlobalSkillInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSGlobalSkillInfo.m; path = Models/DSGlobalSkillInfo.m; sourceTree = "<group>"; };
 		CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dqxSkillSmltr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -190,6 +193,8 @@
 				5847E0791DFE3F4800995ABE /* DSTableJobLevelCellItem.m */,
 				5847E0891DFEC6B700995ABE /* DSGlobalJobInfo.h */,
 				5847E08A1DFEC6C500995ABE /* DSGlobalJobInfo.m */,
+				58D40C281DFFB77300F9A520 /* DSGlobalSkillInfo.h */,
+				58D40C291DFFB79700F9A520 /* DSGlobalSkillInfo.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -466,6 +471,7 @@
 				5847E0431DF7B71400995ABE /* DSSkillDetailViewController.m in Sources */,
 				5847E0711DF964D700995ABE /* DSJobSkillPointViewController.m in Sources */,
 				5847E0771DFE3E6600995ABE /* DSTableJobLevelCell.m in Sources */,
+				58D40C2A1DFFB79700F9A520 /* DSGlobalSkillInfo.m in Sources */,
 				5847E0581DF7E7B000995ABE /* DSTableDetailCell.m in Sources */,
 				5847E0641DF8005000995ABE /* DSSkillDetailItem.m in Sources */,
 				5847E0851DFE980300995ABE /* DZNSegmentedControl.m in Sources */,

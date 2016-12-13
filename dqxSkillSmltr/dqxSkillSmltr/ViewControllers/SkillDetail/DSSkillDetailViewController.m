@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "DSSkillDetailViewController.h"
 #import "UIImage+Common.h"
-//#import "DRRecipeCategoriesCell.h"
 #import "DSSkillDetailItem.h"
 #import "DSTableDetailCell.h"
 #import "DSTableHeaderView.h"
@@ -22,10 +21,7 @@
 @end
 
 @implementation DSSkillDetailViewController{
-    NSArray *sectionTitles;
-    NSArray *rowTitles;
-    //NSArray *rowImageNames;
-    NSArray *rowPrice;
+    AppDelegate *appDelegate;
 }
 
 #pragma mark - Lifecycle
@@ -58,10 +54,7 @@
 #pragma mark - Private Method
 
 - (void)initDatas {
-    sectionTitles = SKILL_DETAIL_SECTION;
-    rowTitles = SKILL_DETAIL_POTIN_AND_TITLE;
-    //rowImageNames = SKILL_DETAIL_ICON;
-    rowPrice = SKILL_DETAIL_DESC;
+    appDelegate = [[UIApplication sharedApplication] delegate];
 }
 
 - (void)setupViews {
@@ -94,11 +87,11 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return sectionTitles.count;
+    return appDelegate.gSkillInfo.typeName.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *rows = rowTitles[section];
+    NSArray *rows = appDelegate.gSkillInfo.skillName[section];
     return rows.count;
 }
 
@@ -107,9 +100,9 @@
     DSTableDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:kDSTableDetailCellID forIndexPath:indexPath];
     
     DSSkillDetailItem *model = [[DSSkillDetailItem alloc] init];
-    model.itemName = rowTitles[indexPath.section][indexPath.row];
+    model.itemName = appDelegate.gSkillInfo.skillName[indexPath.section][indexPath.row];
     model.iconName = [NSString stringWithFormat:@"Icon-%@", model.itemName];
-    model.itemMemo = rowPrice[indexPath.section][indexPath.row];
+    model.itemMemo = appDelegate.gSkillInfo.skillDesc[indexPath.section][indexPath.row];
     [(DSTableDetailCell *)cell configureCellWithSearchItem:(DSSkillDetailItem *)model];
     return cell;
 }
@@ -123,7 +116,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     DSTableHeaderView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kDSTableHeaderViewID];
-    view.titleLabel.text = sectionTitles[section];
+    view.titleLabel.text = appDelegate.gSkillInfo.typeName[section];
     
     return view;
 }
@@ -134,7 +127,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
 }
 
 @end

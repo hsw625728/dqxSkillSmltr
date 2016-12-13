@@ -13,6 +13,8 @@
 
 @interface DSSkillPointSettingViewController : DSBaseViewController
 
+-(void)setJobForPointSetting:(NSString*)job;
+
 @end
 
 #endif /* DSSkillPointSettingViewController_h */

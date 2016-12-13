@@ -20,7 +20,7 @@ FOUNDATION_EXPORT NSString *const kDSTableJobLevelCellID;
 + (CGFloat)cellHeight;
 
 - (void)configureCellWithJobLevelItem:(DSTableJobLevelCellItem *)item;
-- (NSString*)getLevel;
+- (NSInteger)getLevel;
 
 @end
 

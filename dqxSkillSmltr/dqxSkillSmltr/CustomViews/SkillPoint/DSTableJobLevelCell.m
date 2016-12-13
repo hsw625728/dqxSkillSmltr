@@ -119,7 +119,8 @@ NSString *const kDSTableJobLevelCellID = @"kDSTableJobLevelCellID";
 #pragma mark - Public Method
 
 - (void)configureCellWithJobLevelItem:(DSTableJobLevelCellItem *)item {
-    _coverView.image = [UIImage imageNamed:item.iconName];
+    _coverView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@职业", item.jobName]];
+    _setView.value = item.level;
     _labelView.text = @"等级：";
 }
 
@@ -127,8 +128,8 @@ NSString *const kDSTableJobLevelCellID = @"kDSTableJobLevelCellID";
     _levelView.text = [NSString stringWithFormat:@"%i", (int)stepper.value];
 }
 
-- (NSString*)getLevel{
-    return _levelView.text;
+- (NSInteger)getLevel{
+    return _setView.value;
 }
 
 @end

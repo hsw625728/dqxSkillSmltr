@@ -108,7 +108,11 @@
     DSTableJobLevelCell *cell = [tableView dequeueReusableCellWithIdentifier:kDSTableJobLevelCellID forIndexPath:indexPath];
     
     DSTableJobLevelCellItem *model = [[DSTableJobLevelCellItem alloc] init];
-    model.iconName = [NSString stringWithFormat:@"%@职业",rowImageNames[indexPath.section][indexPath.row]];
+    model.jobName = rowImageNames[indexPath.section][indexPath.row];//[NSString stringWithFormat:@"%@职业",rowImageNames[indexPath.section][indexPath.row]];
+    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    DSGlobalJobInfo *value = appDelegate.gJobInfo[model.jobName];
+    model.level = value.level;
+    
     [(DSTableJobLevelCell *)cell configureCellWithJobLevelItem:(DSTableJobLevelCellItem *)model];
     [jobLevels setObject:cell forKey:rowImageNames[indexPath.section][indexPath.row]];
     return cell;
@@ -151,11 +155,14 @@
         NSString *key = keysArray[i];
         DSGlobalJobInfo *value = appDelegate.gJobInfo[key];
         DSTableJobLevelCell *cell = [jobLevels objectForKey:key];
-        NSString *level = [cell getLevel];
-        value.level = [level integerValue];
-        //修改完毕盾数据需要写入原结构体
-        //appDelegate.gJobInfo[key] = value;
+        value.level = [cell getLevel];
+        [appDelegate.gJobInfo setObject:value forKey:key];
     }
+    
+    //write file
+    NSString *docPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [docPath stringByAppendingPathComponent:@"globalJobInfo"];
+    [NSKeyedArchiver archiveRootObject:appDelegate.gJobInfo toFile:path];
     
     [self.navigationController pushViewController:[[DSTabBarController alloc] init] animated:YES];
 }

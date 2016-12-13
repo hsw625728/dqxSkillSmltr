@@ -16,6 +16,7 @@
 
 @interface DSSkillPointSettingViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource>
 
+@property (strong, nonatomic) NSString* jobName;
 @property (strong, nonatomic) DZNSegmentedControl *segmentedControl;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
@@ -59,11 +60,15 @@
 
 - (void)setupViews {
     UIImageView *titleImage = [[UIImageView alloc] init];
-    titleImage.image = [UIImage imageNamed:@"战士职业"];
+    titleImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@职业", _jobName]];
     self.navigationItem.titleView = titleImage;
     
     _segmentedControl = ({
-        DZNSegmentedControl *segmentedControl = [[DZNSegmentedControl alloc] initWithItems:@[@"勇敢", @"单手剑", @"双手剑", @"斧", @"盾"]];
+        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        DSGlobalJobInfo *jobInfo = appDelegate.gJobInfo[_jobName];
+        NSArray *keys = [jobInfo.skillPoint allKeys];
+        
+        DZNSegmentedControl *segmentedControl = [[DZNSegmentedControl alloc] initWithItems:keys];
         segmentedControl.backgroundColor = [UIColor whiteColor];
         segmentedControl.frame = CGRectMake(0, 0, SCREEN_WIDTH, 35);
         segmentedControl.showsCount = NO;
@@ -255,6 +260,10 @@
             break;
     }
     
+}
+
+-(void)setJobForPointSetting:(NSString*)job{
+    _jobName = job;
 }
 
 @end

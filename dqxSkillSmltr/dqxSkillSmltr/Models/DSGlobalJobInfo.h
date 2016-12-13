@@ -23,4 +23,5 @@
 -(DSGlobalJobInfo*)initMine:(NSString*)name level:(NSInteger)lev sJob:(NSString*)sjob weapon1:(NSString*)w1 weapon2:(NSString*)w2 weapon3:(NSString*)w3 weapon4:(NSString*)w4;
 @end
 
+
 #endif /* DSGlobalJobInfo_h */

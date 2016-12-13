@@ -11,8 +11,8 @@
 
 @interface DSTableJobLevelCellItem : NSObject
 
-@property (nonatomic, copy) NSString *iconName;
-@property (nonatomic, copy) NSString *itemMemo;
+@property (nonatomic, copy) NSString *jobName;
+@property (nonatomic, assign) NSInteger level;
 
 @end
 

@@ -25,8 +25,8 @@
 
 @implementation DSSkillPointViewController{
     NSArray *sectionTitles;
-    NSArray *rowJob;
-    NSArray *rowImageNames;
+    NSArray *rowSkillType;
+    NSArray *rowJobNames;
     NSArray *rowPoint;
 }
 
@@ -62,9 +62,8 @@
 
 - (void)initDatas {
     sectionTitles = JOB_TYPE_SECTION;
-    rowImageNames = JOB_TYPE_NAME;
-    rowJob = JOB_SKILL_TYPE;
-    rowPoint = JOB_SKILL_POINT;
+    rowJobNames = JOB_TYPE_NAME;
+    rowSkillType = JOB_SKILL_TYPE;
 }
 
 - (void)setupViews {
@@ -101,7 +100,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *rows = rowImageNames[section];
+    NSArray *rows = rowJobNames[section];
     return rows.count;
 }
 
@@ -110,18 +109,22 @@
     DSTableSkillPointCell *cell = [tableView dequeueReusableCellWithIdentifier:kDSTableSkillPointCellID forIndexPath:indexPath];
     
     DSTableSkillPointCellItem *model = [[DSTableSkillPointCellItem alloc] init];
-    model.jobName = rowImageNames[indexPath.section][indexPath.row];
-    model.iconName = [NSString stringWithFormat:@"%@职业",rowImageNames[indexPath.section][indexPath.row]];
-    model.skillType1 = rowJob[indexPath.row][0];
-    model.skillType2 = rowJob[indexPath.row][1];
-    model.skillType3 = rowJob[indexPath.row][2];
-    model.skillType4 = rowJob[indexPath.row][3];
-    model.skillType5 = rowJob[indexPath.row][4];
-    model.skillPoint1 = rowPoint[indexPath.row][0];
-    model.skillPoint2 = rowPoint[indexPath.row][1];
-    model.skillPoint3 = rowPoint[indexPath.row][2];
-    model.skillPoint4 = rowPoint[indexPath.row][3];
-    model.skillPoint5 = rowPoint[indexPath.row][4];
+    model.jobName = rowJobNames[indexPath.section][indexPath.row];
+    model.iconName = [NSString stringWithFormat:@"%@职业",rowJobNames[indexPath.section][indexPath.row]];
+    model.skillType1 = rowSkillType[indexPath.row][0];
+    model.skillType2 = rowSkillType[indexPath.row][1];
+    model.skillType3 = rowSkillType[indexPath.row][2];
+    model.skillType4 = rowSkillType[indexPath.row][3];
+    model.skillType5 = rowSkillType[indexPath.row][4];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    DSGlobalJobInfo *jobInfo = appDelegate.gJobInfo[model.jobName];
+    model.skillPoint1 = jobInfo.skillPoint[model.skillType1];
+    model.skillPoint2 = jobInfo.skillPoint[model.skillType2];
+    model.skillPoint3 = jobInfo.skillPoint[model.skillType3];
+    model.skillPoint4 = jobInfo.skillPoint[model.skillType4];
+    model.skillPoint5 = jobInfo.skillPoint[model.skillType5];
+    
     [(DSTableSkillPointCell *)cell configureCellWithSearchItem:(DSTableSkillPointCellItem *)model];
     return cell;
 }
@@ -146,6 +149,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    DSSkillPointSettingViewController *jlView = [[DSSkillPointSettingViewController alloc] init];
+    [jlView setJobForPointSetting:rowJobNames[indexPath.section][indexPath.row]];
     [self.navigationController pushViewController:[[DSSkillPointSettingViewController alloc] init] animated:YES];
 }
 
