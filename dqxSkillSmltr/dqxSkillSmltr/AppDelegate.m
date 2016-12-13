@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DSTabBarController.h"
+#import "DSGlobalJobInfo.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,30 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //初始化核心全局数据
+    NSString *docPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [docPath stringByAppendingPathComponent:@"globalJobInfo"];
+    
+    _gJobInfo = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    if (ISNULL(_gJobInfo))
+    {
+        DSGlobalJobInfo *info1 = JOB_SKILL_TYPE_ZS;
+        DSGlobalJobInfo *info2 = JOB_SKILL_TYPE_MFS;
+        DSGlobalJobInfo *info3 = JOB_SKILL_TYPE_SL;
+        DSGlobalJobInfo *info4 = JOB_SKILL_TYPE_WSJ;
+        DSGlobalJobInfo *info5 = JOB_SKILL_TYPE_LXYR;
+        DSGlobalJobInfo *info6 = JOB_SKILL_TYPE_XBJ;
+        DSGlobalJobInfo *info7 = JOB_SKILL_TYPE_SQS;
+        DSGlobalJobInfo *info8 = JOB_SKILL_TYPE_YX;
+        DSGlobalJobInfo *info9 = JOB_SKILL_TYPE_MFZS;
+        DSGlobalJobInfo *info10 = JOB_SKILL_TYPE_XZ;
+        _gJobInfo = [[NSDictionary alloc] initWithObjectsAndKeys:\
+                     info1, @"战士", info2, @"魔法师", \
+                     info3, @"僧侣", info4, @"武术家", \
+                     info5, @"旅行艺人", info6, @"寻宝家", \
+                     info7, @"圣骑士", info8, @"游侠", \
+                     info9, @"魔法战士", info10, @"贤者", nil];
+    }
     //创建主窗口
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     _window.backgroundColor = [UIColor whiteColor];

@@ -52,6 +52,101 @@
 
 #define ISNULL(x) (x?((id)x==(id)[NSNull null]):true)
 
+//全局数据初始化
+#define JOB_SKILL_TYPE_ZS [[DSGlobalJobInfo alloc] \
+initMine:@"战士" \
+level:(NSInteger)@0 \
+sJob:@"勇气" \
+weapon1:@"单手剑" \
+weapon2:@"双手剑" \
+weapon3:@"斧" \
+weapon4:@"盾"]
+
+#define JOB_SKILL_TYPE_MFS [[DSGlobalJobInfo alloc] \
+initMine:@"魔法师" \
+level:(NSInteger)@0 \
+sJob:@"魔法" \
+weapon1:@"短剑" \
+weapon2:@"双手杖" \
+weapon3:@"盾" \
+weapon4:@"鞭"]
+
+#define JOB_SKILL_TYPE_SL [[DSGlobalJobInfo alloc] \
+initMine:@"僧侣" \
+level:(NSInteger)@0 \
+sJob:@"信仰" \
+weapon1:@"短杖" \
+weapon2:@"矛" \
+weapon3:@"盾" \
+weapon4:@"棍"]
+
+#define JOB_SKILL_TYPE_WSJ [[DSGlobalJobInfo alloc] \
+initMine:@"武术家" \
+level:(NSInteger)@0 \
+sJob:@"气力" \
+weapon1:@"爪" \
+weapon2:@"棍" \
+weapon3:@"扇" \
+weapon4:@"格斗"]
+
+#define JOB_SKILL_TYPE_LXYR [[DSGlobalJobInfo alloc] \
+initMine:@"旅行艺人" \
+level:(NSInteger)@0 \
+sJob:@"曲艺" \
+weapon1:@"短剑" \
+weapon2:@"扇" \
+weapon3:@"盾" \
+weapon4:@"棍"]
+
+#define JOB_SKILL_TYPE_XBJ [[DSGlobalJobInfo alloc] \
+initMine:@"寻宝家" \
+level:(NSInteger)@0 \
+sJob:@"宝物" \
+weapon1:@"短剑" \
+weapon2:@"爪" \
+weapon3:@"鞭" \
+weapon4:@"格斗"]
+
+#define JOB_SKILL_TYPE_SQS [[DSGlobalJobInfo alloc] \
+initMine:@"圣骑士" \
+level:(NSInteger)@0 \
+sJob:@"博爱" \
+weapon1:@"短杖" \
+weapon2:@"矛" \
+weapon3:@"锤" \
+weapon4:@"盾"]
+
+#define JOB_SKILL_TYPE_YX [[DSGlobalJobInfo alloc] \
+initMine:@"游侠" \
+level:(NSInteger)@0 \
+sJob:@"生存" \
+weapon1:@"斧" \
+weapon2:@"弓" \
+weapon3:@"回旋镖" \
+weapon4:@"格斗"]
+
+#define JOB_SKILL_TYPE_MFZS [[DSGlobalJobInfo alloc] \
+initMine:@"魔法战士" \
+level:(NSInteger)@0 \
+sJob:@"源力" \
+weapon1:@"单手剑" \
+weapon2:@"双手杖" \
+weapon3:@"弓" \
+weapon4:@"盾"]
+
+#define JOB_SKILL_TYPE_XZ [[DSGlobalJobInfo alloc] \
+initMine:@"悟性" \
+level:(NSInteger)@0 \
+sJob:@"勇气" \
+weapon1:@"双手杖" \
+weapon2:@"弓" \
+weapon3:@"回旋镖" \
+weapon4:@"盾"]
+
+//最小特技点等级
+//最大特技点等级
+#define MIN_SKILL_POINT_LEVEL 10
+#define MAX_SKILL_POINT_LEVEL 50
 //职业列表
 #define JOB_TYPE_SECTION                @[@"职业"]
 #define JOB_TYPE_NAME                   @[@[@"战士", @"魔法师", @"僧侣", @"武术家", @"旅行艺人", @"寻宝家", @"圣骑士", @"游侠", @"魔法战士", @"贤者"]]

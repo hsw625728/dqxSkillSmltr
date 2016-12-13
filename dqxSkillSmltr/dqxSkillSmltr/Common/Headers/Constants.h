@@ -33,8 +33,11 @@
 #define DSSkillPoint @"加点模拟"
 #define DSSkillDetail @"特技列表"
 #define DSSkillHistory @"历史记录"
+#define DSJobLevelSetting @"等级设置"
 
 // Hint
+#define DSCancelStr                             @"取消"
+#define DSSaveStr                               @"保存"
 #define BAD_NETWORK                             @"网络连接失败"
 #define SERVER_ERROR                            @"服务器连接失败"
 

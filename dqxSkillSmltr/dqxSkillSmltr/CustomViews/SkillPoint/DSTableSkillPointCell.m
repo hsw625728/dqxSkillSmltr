@@ -34,7 +34,7 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
 #pragma mark - Class Method
 
 + (CGFloat)cellHeight {
-    return 64;
+    return 48;
 }
 
 #pragma mark - View Lifecycle
@@ -60,12 +60,13 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
     if (_coverView) {
         return;
     }
-    
+    const int ICON_WIDE = 88;
+    const int ICON_HEIGH = 29;
     self.accessoryType = UITableViewCellAccessoryNone;
     self.contentView.backgroundColor = [UIColor whiteColor];
     
-    CGFloat contentViewWidth = CGRectGetWidth(self.frame);
-    CGFloat lableX = DSTableIconWidth + 8*2;
+    CGFloat contentViewWidth = CGRectGetWidth([UIScreen mainScreen ].applicationFrame);
+    CGFloat lableX = ICON_WIDE + 8*2;
     CGFloat lableWidth = (contentViewWidth - lableX)/5;
     
     _coverView = ({
@@ -73,7 +74,7 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
         imageView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.sizeOffset(CGSizeMake(DSTableIconWidth, DSTableIconWidth));
+            make.size.sizeOffset(CGSizeMake(ICON_WIDE, ICON_HEIGH));
             make.centerY.equalTo(self.contentView);
             make.left.equalTo(self.contentView).offset(8);
         }];

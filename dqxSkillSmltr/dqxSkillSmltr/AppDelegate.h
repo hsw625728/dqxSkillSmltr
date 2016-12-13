@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DSGlobalJobInfo.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic, copy) NSDictionary *gJobInfo;
 
 @end
 

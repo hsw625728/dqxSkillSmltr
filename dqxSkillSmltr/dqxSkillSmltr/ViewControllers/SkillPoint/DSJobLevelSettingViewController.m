@@ -1,33 +1,31 @@
 //
-//  DSSkillPointViewController.m
+//  DSJobLevelSettingViewController.m
 //  dqxSkillSmltr
 //
-//  Created by HANSHAOWEN on 16/12/7.
+//  Created by HANSHAOWEN on 16/12/12.
 //  Copyright © 2016年 HANSHAOWEN. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "DSSkillPointViewController.h"
+#import "DSJobLevelSettingViewController.h"
+#import "DSTabBarController.h"
 #import "UIImage+Common.h"
-#import "DSTableSkillPointCellItem.h"
-#import "DSTableSkillPointCell.h"
+#import "DSTableJobLevelCell.h"
+#import "DSTableJobLevelCellItem.h"
 #import "DSTableHeaderView.h"
 #import "View+MASAdditions.h"
-#import "DSJobLevelSettingViewController.h"
-#import "DSSkillPointSettingViewController.h"
 
 
-@interface DSSkillPointViewController() <UITableViewDataSource, UITableViewDelegate>
+@interface DSJobLevelSettingViewController() <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
 
-@implementation DSSkillPointViewController{
+@implementation DSJobLevelSettingViewController{
     NSArray *sectionTitles;
-    NSArray *rowJob;
     NSArray *rowImageNames;
-    NSArray *rowPoint;
+    NSMutableDictionary* jobLevels;
 }
 
 #pragma mark - Lifecycle
@@ -46,14 +44,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.title = DSSkillPoint;
+    jobLevels = [[NSMutableDictionary alloc] initWithCapacity:(10)];
+    self.navigationItem.title = DSJobLevelSetting;
     
     [self setupViews];
     
     //设置导航栏
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:DSJobLevelSetting style:UIBarButtonItemStylePlain target:self action:@selector(navtoSettingJobLevel)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:DSCancelStr style:UIBarButtonItemStylePlain target:self action:@selector(cancelSettingJobLevel)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:DSSaveStr style:UIBarButtonItemStyleDone target:self action:@selector(saveSettingJobLevel)];
     
     [self initDatas];
     [self setupViews];
@@ -63,8 +63,6 @@
 - (void)initDatas {
     sectionTitles = JOB_TYPE_SECTION;
     rowImageNames = JOB_TYPE_NAME;
-    rowJob = JOB_SKILL_TYPE;
-    rowPoint = JOB_SKILL_POINT;
 }
 
 - (void)setupViews {
@@ -75,9 +73,9 @@
         tableView.delegate = self;
         
         [tableView registerClass:[DSTableHeaderView class] forHeaderFooterViewReuseIdentifier:kDSTableHeaderViewID];
-        [tableView registerClass:[DSTableSkillPointCell class] forCellReuseIdentifier:kDSTableSkillPointCellID];
+        [tableView registerClass:[DSTableJobLevelCell class] forCellReuseIdentifier:kDSTableJobLevelCellID];
         
-        tableView.rowHeight = [DSTableSkillPointCell cellHeight];
+        tableView.rowHeight = [DSTableJobLevelCell cellHeight];
         
         
         [self.view addSubview:tableView];
@@ -107,22 +105,12 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DSTableSkillPointCell *cell = [tableView dequeueReusableCellWithIdentifier:kDSTableSkillPointCellID forIndexPath:indexPath];
+    DSTableJobLevelCell *cell = [tableView dequeueReusableCellWithIdentifier:kDSTableJobLevelCellID forIndexPath:indexPath];
     
-    DSTableSkillPointCellItem *model = [[DSTableSkillPointCellItem alloc] init];
-    model.jobName = rowImageNames[indexPath.section][indexPath.row];
+    DSTableJobLevelCellItem *model = [[DSTableJobLevelCellItem alloc] init];
     model.iconName = [NSString stringWithFormat:@"%@职业",rowImageNames[indexPath.section][indexPath.row]];
-    model.skillType1 = rowJob[indexPath.row][0];
-    model.skillType2 = rowJob[indexPath.row][1];
-    model.skillType3 = rowJob[indexPath.row][2];
-    model.skillType4 = rowJob[indexPath.row][3];
-    model.skillType5 = rowJob[indexPath.row][4];
-    model.skillPoint1 = rowPoint[indexPath.row][0];
-    model.skillPoint2 = rowPoint[indexPath.row][1];
-    model.skillPoint3 = rowPoint[indexPath.row][2];
-    model.skillPoint4 = rowPoint[indexPath.row][3];
-    model.skillPoint5 = rowPoint[indexPath.row][4];
-    [(DSTableSkillPointCell *)cell configureCellWithSearchItem:(DSTableSkillPointCellItem *)model];
+    [(DSTableJobLevelCell *)cell configureCellWithJobLevelItem:(DSTableJobLevelCellItem *)model];
+    [jobLevels setObject:cell forKey:rowImageNames[indexPath.section][indexPath.row]];
     return cell;
 }
 
@@ -146,13 +134,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.navigationController pushViewController:[[DSSkillPointSettingViewController alloc] init] animated:YES];
+    
 }
 
-#pragma mark UIselecter
+#pragma mark UIselector
+- (void)cancelSettingJobLevel {
+    [self.navigationController pushViewController:[[DSTabBarController alloc] init] animated:YES];
+}
 
-- (void)navtoSettingJobLevel {
-    [self.navigationController pushViewController:[[DSJobLevelSettingViewController alloc] init] animated:YES];
+- (void)saveSettingJobLevel {
+    //保存等级信息
+    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    NSArray *keysArray = [appDelegate.gJobInfo allKeys];
+    for (int i = 0; i < keysArray.count; i++)
+    {
+        NSString *key = keysArray[i];
+        DSGlobalJobInfo *value = appDelegate.gJobInfo[key];
+        DSTableJobLevelCell *cell = [jobLevels objectForKey:key];
+        NSString *level = [cell getLevel];
+        value.level = [level integerValue];
+        //修改完毕盾数据需要写入原结构体
+        //appDelegate.gJobInfo[key] = value;
+    }
+    
+    [self.navigationController pushViewController:[[DSTabBarController alloc] init] animated:YES];
 }
 
 @end
