@@ -10,7 +10,7 @@
 #import "DZNSegmentedControl.h"
 #import "View+MASAdditions.h"
 #import "DSTableSkillPointSettingCell.h"
-#import "DSTableSkillPointCellItem.h"
+#import "DSTableSkillPointSettingCellItem.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "DSSkillPointSettingViewController.h"
 
@@ -26,6 +26,7 @@
 @implementation DSSkillPointSettingViewController {
     DSSkillType skillType;
     NSMutableDictionary *dataSource;
+    AppDelegate *appDelegate;
 }
 
 #pragma mark - Lifecycle
@@ -40,6 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.edgesForExtendedLayout = UIRectEdgeAll;
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -59,16 +61,14 @@
 }
 
 - (void)setupViews {
-    UIImageView *titleImage = [[UIImageView alloc] init];
-    titleImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@职业", _jobName]];
-    self.navigationItem.titleView = titleImage;
+    DSGlobalJobInfo *jobInfo = appDelegate.gJobInfo[_jobName];
+    NSString *titleStr = [[NSString alloc] initWithFormat:@"%i/%i", (int)jobInfo.unusePoint, (int)jobInfo.totelPoint];
+    self.navigationItem.title = titleStr;
     
     _segmentedControl = ({
-        AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         DSGlobalJobInfo *jobInfo = appDelegate.gJobInfo[_jobName];
-        NSArray *keys = [jobInfo.skillPoint allKeys];
         
-        DZNSegmentedControl *segmentedControl = [[DZNSegmentedControl alloc] initWithItems:keys];
+        DZNSegmentedControl *segmentedControl = [[DZNSegmentedControl alloc] initWithItems:@[jobInfo.skillJob, jobInfo.skillWeapon1, jobInfo.skillWeapon2, jobInfo.skillWeapon3, jobInfo.skillWeapon4]];
         segmentedControl.backgroundColor = [UIColor whiteColor];
         segmentedControl.frame = CGRectMake(0, 0, SCREEN_WIDTH, 35);
         segmentedControl.showsCount = NO;
@@ -112,12 +112,7 @@
     }];
 }
 
-/*
-- (NSArray *)dataByCurrentSearchType {
-    NSArray *datas = dataSource[[@(searchType) stringValue]];
-    return datas;
-}
- */
+
 
 #pragma mark - Public Method
 
@@ -137,69 +132,10 @@
     } else if (control.selectedSegmentIndex == 4) {
         skillType = DSSkillTypeWeapon4;
     }
+    [self.tableView reloadData];
 }
 
-#pragma mark - Network Request
-/*
-- (void)searching {
-    [_activityIndicatorView startAnimating];
-    
-    [MLBHTTPRequester searchWithType:[MLBHTTPRequester apiStringForSearchWithSearchType:searchType] keywords:_searchBar.text success:^(id responseObject) {
-        [self processWithResponseObject:responseObject];
-    } fail:^(NSError *error) {
-        [self showHUDServerError];
-    }];
-}
 
-- (void)processWithResponseObject:(id)responseObject {
-    if ([responseObject[@"res"] integerValue] == 0) {
-        NSError *error;
-        NSArray *results;
-        NSArray *data = responseObject[@"data"];
-        
-        switch (searchType) {
-            case MLBSearchTypeHome: {
-                results = [MTLJSONAdapter modelsOfClass:[MLBHomeItem class] fromJSONArray:data error:&error];
-                break;
-            }
-            case MLBSearchTypeRead: {
-                results = [MTLJSONAdapter modelsOfClass:[MLBSearchRead class] fromJSONArray:data error:&error];
-                break;
-            }
-            case MLBSearchTypeMusic: {
-                results = [MTLJSONAdapter modelsOfClass:[MLBRelatedMusic class] fromJSONArray:data error:&error];
-                break;
-            }
-            case MLBSearchTypeMovie: {
-                results = [MTLJSONAdapter modelsOfClass:[MLBMovieListItem class] fromJSONArray:data error:&error];
-                break;
-            }
-            case MLBSearchTypeAuthor: {
-                results = [MTLJSONAdapter modelsOfClass:[MLBUser class] fromJSONArray:data error:&error];
-                break;
-            }
-        }
-        
-        if (!error) {
-            if (results) {
-                [dataSource setObject:results forKey:[@(searchType) stringValue]];
-                
-                _segmentedControl.hidden = NO;
-                _tableView.hidden = NO;
-                _hintView.hidden = YES;
-                
-                [_tableView reloadData];
-            } else {
-                _hintView.hidden = NO;
-            }
-            
-            [_activityIndicatorView stopAnimating];
-        } else {
-            [self modelTransformFailedWithError:error];
-        }
-    }
-}
-*/
 #pragma mark - DZNEmptyDataSetSource
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
@@ -209,8 +145,21 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    //return [self dataByCurrentSearchType].count;
-    return 8;
+    NSString *skillTypeName = [[NSString alloc] init];
+    skillTypeName = [self getSelectSkillType];
+    
+    int index = 0;
+    NSArray *aName = appDelegate.gSkillInfo.skillName;
+    for (;index < aName.count; index++)
+    {
+        NSString *type = appDelegate.gSkillInfo.typeName[index];
+        if ([type isEqualToString:skillTypeName])
+            break;
+    }
+    
+    NSArray *array = appDelegate.gSkillInfo.skillDesc[index];
+    
+    return array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -233,7 +182,27 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    DSTableSkillPointCellItem *model = [[DSTableSkillPointCellItem alloc] init];//[self dataByCurrentSearchType][indexPath.row];
+    
+    NSString *skillTypeName = [[NSString alloc] init];
+    skillTypeName = [self getSelectSkillType];
+    
+    int index = 0;
+    for (;index < appDelegate.gSkillInfo.skillName.count; index++)
+    {
+        NSString *type = appDelegate.gSkillInfo.typeName[index];
+        if ([type isEqualToString:skillTypeName])
+            break;
+    }
+    
+    NSArray *arrayName = appDelegate.gSkillInfo.skillName[index];
+    NSArray *arrayPoint = appDelegate.gSkillInfo.skillPoint[index];
+    NSArray *arrayDesc = appDelegate.gSkillInfo.skillDesc[index];
+    
+    
+    DSTableSkillPointSettingCellItem *model = [[DSTableSkillPointSettingCellItem alloc] init];//[self dataByCurrentSearchType][indexPath.row];
+    model.skillName = arrayName[indexPath.row];
+    model.skillPoint = arrayPoint[indexPath.row];
+    model.skillDesc = arrayDesc[indexPath.row];
     
     
     switch (skillType) {
@@ -242,7 +211,7 @@
         case DSSkillTypeWeapon2:
         case DSSkillTypeWeapon3:
         case DSSkillTypeWeapon4:
-            [(DSTableSkillPointSettingCell *)cell configureCellWithSkillPointItem:(DSTableSkillPointCellItem *)model];
+            [(DSTableSkillPointSettingCell *)cell configureCellWithSkillPointItem:(DSTableSkillPointSettingCellItem *)model];
             break;
     }
      
@@ -260,8 +229,89 @@
             break;
     }
     
+    //职业名称  特技类型  特技点数  剩余点数
+    DSGlobalJobInfo *jobInfo = [[DSGlobalJobInfo alloc] init];
+    jobInfo = appDelegate.gJobInfo[_jobName];
+    DSTableSkillPointSettingCellItem *model = [self getSelectSkillPointItemInfo:indexPath];
+    NSInteger needPoint = [model.skillPoint intValue];
+    if (jobInfo.unusePoint >= needPoint)
+    {
+        NSString *skillTypeStr = [self getSelectSkillType];
+        //这里有个奇怪的BUG，求指导，哪位大侠看到了，解决方案请发送以下邮箱：
+        //hsw625728@163.com
+        //感激不尽
+        //--崩溃代码--
+        //[jobInfo.skillPointSetting setObject:model.skillPoint forKey:skillTypeStr];
+        //--以下是一个笨的解决方案
+        NSMutableDictionary *temp = [[NSMutableDictionary alloc] initWithDictionary:jobInfo.skillPointSetting];
+        [temp setObject:model.skillPoint forKey:skillTypeStr];
+        jobInfo.skillPointSetting = temp;
+        //----------------------
+        [jobInfo updateSkillPoint];
+        
+        [appDelegate.gJobInfo setObject:jobInfo.skillPointSetting forKey:skillTypeStr];
+        
+        NSString *docPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        NSString *path = [docPath stringByAppendingPathComponent:@"globalJobInfo"];
+        [NSKeyedArchiver archiveRootObject:appDelegate.gJobInfo toFile:path];
+    }
+    else{
+        //这里需要提示框：技能点数不足！
+    }
+    
+    NSString *titleStr = [[NSString alloc] initWithFormat:@"%i/%i", (int)jobInfo.unusePoint, (int)jobInfo.totelPoint];
+    self.navigationItem.title = titleStr;
 }
 
+-(NSString*)getSelectSkillType{
+    NSString *skillTypeName = [[NSString alloc] init];
+    DSGlobalJobInfo *jobInfo = appDelegate.gJobInfo[_jobName];
+    switch(skillType)
+    {
+        case DSSkillTypeJbo:
+            skillTypeName = jobInfo.skillJob;
+            break;
+        case DSSkillTypeWeapon1:
+            skillTypeName = jobInfo.skillWeapon1;
+            break;
+        case DSSkillTypeWeapon2:
+            skillTypeName = jobInfo.skillWeapon2;
+            break;
+        case DSSkillTypeWeapon3:
+            skillTypeName = jobInfo.skillWeapon3;
+            break;
+        case DSSkillTypeWeapon4:
+            skillTypeName = jobInfo.skillWeapon4;
+            break;
+        default:
+            break;
+    }
+    return skillTypeName;
+}
+-(DSTableSkillPointSettingCellItem*)getSelectSkillPointItemInfo:(NSIndexPath *)indexPath {
+    NSString *skillTypeName = [[NSString alloc] init];
+    skillTypeName = [self getSelectSkillType];
+    
+    int index = 0;
+    for (;index < appDelegate.gSkillInfo.skillName.count; index++)
+    {
+        NSString *type = appDelegate.gSkillInfo.typeName[index];
+        if ([type isEqualToString:skillTypeName])
+            break;
+    }
+    
+    NSArray *arrayName = appDelegate.gSkillInfo.skillName[index];
+    NSArray *arrayPoint = appDelegate.gSkillInfo.skillPoint[index];
+    NSArray *arrayDesc = appDelegate.gSkillInfo.skillDesc[index];
+    
+    
+    DSTableSkillPointSettingCellItem *model = [[DSTableSkillPointSettingCellItem alloc] init];//[self dataByCurrentSearchType][indexPath.row];
+    model.skillName = arrayName[indexPath.row];
+    model.skillPoint = arrayPoint[indexPath.row];
+    model.skillDesc = arrayDesc[indexPath.row];
+    
+    return model;
+}
 -(void)setJobForPointSetting:(NSString*)job{
     _jobName = job;
 }

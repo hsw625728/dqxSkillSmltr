@@ -15,7 +15,9 @@
 @property (nonatomic, copy) NSArray *skillPoint;
 @property (nonatomic, copy) NSArray *skillName;
 @property (nonatomic, copy) NSArray *skillDesc;
+@property (nonatomic, copy) NSDictionary *pointForLevel;
 
 @end
+
 
 #endif

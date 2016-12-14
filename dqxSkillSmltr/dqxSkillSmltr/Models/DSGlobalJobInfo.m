@@ -19,14 +19,31 @@
     self.skillWeapon2 = w2;
     self.skillWeapon3 = w3;
     self.skillWeapon4 = w4;
-    self.skillPoint = [[NSDictionary alloc] initWithObjectsAndKeys:\
-                       @0, _jobName, \
-                       @0, _skillWeapon1, \
-                       @0, _skillWeapon2, \
-                       @0, _skillWeapon3, \
-                       @0, _skillWeapon4, nil];
+    
+    self.skillPointSetting = [[NSMutableDictionary alloc] initWithObjectsAndKeys:\
+                              @"0", _skillJob, \
+                              @"0", _skillWeapon1, \
+                              @"0", _skillWeapon2, \
+                              @"0", _skillWeapon3, \
+                              @"0", _skillWeapon4, nil];
+    
+    [self updateSkillPoint];
+    
     return self;
 }
+
+-(void)updateSkillPoint
+{
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSDictionary *dic = appDelegate.gSkillInfo.pointForLevel;
+    self.totelPoint = [dic[[[NSString alloc] initWithFormat:@"%i", (int)self.level]] intValue];
+    self.unusePoint = _totelPoint - [_skillPointSetting[_skillJob] intValue]\
+                                  - [_skillPointSetting[_skillWeapon1] intValue]\
+                                  - [_skillPointSetting[_skillWeapon2] intValue]\
+                                  - [_skillPointSetting[_skillWeapon3] intValue]\
+                                  - [_skillPointSetting[_skillWeapon4] intValue];
+}
+
 // 当将一个自定义对象保存到文件的时候就会调用该方法
 // 在该方法中说明如何存储自定义对象的属性
 // 也就说在该方法中说清楚存储自定义对象的哪些属性
@@ -35,12 +52,14 @@
     NSLog(@"调用了encodeWithCoder:方法");
     [aCoder encodeObject:self.jobName forKey:@"jobName"];
     [aCoder encodeInteger:self.level forKey:@"level"];
+    [aCoder encodeInteger:self.totelPoint forKey:@"totelPoint"];
+    [aCoder encodeInteger:self.unusePoint forKey:@"unusePoint"];
     [aCoder encodeObject:self.skillJob forKey:@"skillJob"];
     [aCoder encodeObject:self.skillWeapon1 forKey:@"skillWeapon1"];
     [aCoder encodeObject:self.skillWeapon2 forKey:@"skillWeapon2"];
     [aCoder encodeObject:self.skillWeapon3 forKey:@"skillWeapon3"];
     [aCoder encodeObject:self.skillWeapon4 forKey:@"skillWeapon4"];
-    [aCoder encodeObject:self.skillPoint forKey:@"skillPoint"];
+    [aCoder encodeObject:self.skillPointSetting forKey:@"skillPointSetting"];
 }
 
 // 当从文件中读取一个对象的时候就会调用该方法
@@ -53,12 +72,14 @@
     if (self=[super init]) {
         self.jobName=[aDecoder decodeObjectForKey:@"jobName"];
         self.level=[aDecoder decodeIntegerForKey:@"level"];
+        self.totelPoint=[aDecoder decodeIntegerForKey:@"totelPoint"];
+        self.unusePoint=[aDecoder decodeIntegerForKey:@"unusePoint"];
         self.skillJob=[aDecoder decodeObjectForKey:@"skillJob"];
         self.skillWeapon1=[aDecoder decodeObjectForKey:@"skillWeapon1"];
         self.skillWeapon2=[aDecoder decodeObjectForKey:@"skillWeapon2"];
         self.skillWeapon3=[aDecoder decodeObjectForKey:@"skillWeapon3"];
         self.skillWeapon4=[aDecoder decodeObjectForKey:@"skillWeapon4"];
-        self.skillPoint=[aDecoder decodeObjectForKey:@"skillPoint"];
+        self.skillPointSetting=[aDecoder decodeObjectForKey:@"skillPointSetting"];
     }
     return self;
 }

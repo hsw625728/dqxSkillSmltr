@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DSTableSkillPointSettingCell.h"
-#import "DSTableSkillPointCellItem.h"
+#import "DSTableSkillPointSettingCellItem.h"
 #import "View+MASAdditions.h"
 
 NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCellID";
@@ -26,7 +26,7 @@ NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCel
 #pragma mark - Class Method
 
 + (CGFloat)cellHeight {
-    return 48;
+    return 50;
 }
 
 #pragma mark - View Lifecycle
@@ -48,23 +48,24 @@ NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCel
 #pragma mark - Private Method
 
 - (void)setupViews {
-    const int ICON_WIDE = 88;
-    const int ICON_HEIGH = 29;
+    const int ICON_WIDE = 48;
+    const int ICON_HEIGH = 48;
     self.accessoryType = UITableViewCellAccessoryNone;
     self.contentView.backgroundColor = [UIColor whiteColor];
     
-    CGFloat contentViewWidth = CGRectGetWidth([UIScreen mainScreen ].applicationFrame);
-    CGFloat lableX = ICON_WIDE + 8*2;
-    CGFloat lableWidth = (contentViewWidth - lableX)/5;
+    //CGFloat contentViewWidth = CGRectGetWidth([UIScreen mainScreen ].applicationFrame);
+    //CGFloat lableX = ICON_WIDE + 8*2;
     
     _labelSkillPoint = ({
         UILabel *label = [UILabel new];
         label.backgroundColor = [UIColor whiteColor];
         label.font = FontWithSize(26);
+        label.textAlignment = NSTextAlignmentCenter;
         label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.sizeOffset(CGSizeMake(ICON_WIDE, ICON_HEIGH));
+            make.top.equalTo(self.contentView).offset(1);
             make.centerY.equalTo(self.contentView);
             make.left.equalTo(self.contentView).offset(8);
         }];
@@ -72,7 +73,7 @@ NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCel
         label;
     });
     
-    /*
+    
     _labelSkillTitle = ({
         UILabel *label = [UILabel new];
         label.backgroundColor = [UIColor whiteColor];
@@ -80,14 +81,14 @@ NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCel
         label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_labelSkillPoint);
-            make.left.equalTo(self.contentView).offset(lableX);
-            make.right.equalTo(self.contentView).offset(lableX+lableWidth);
+            make.top.equalTo(_labelSkillPoint).offset(1);
+            make.left.equalTo(self.contentView).offset(ICON_WIDE + 16);
+            //make.right.equalTo(self.contentView).offset();
         }];
         
         label;
     });
-     */
+     
     
     _labelSkillDesc = ({
         UILabel *label = [UILabel new];
@@ -96,9 +97,9 @@ NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCel
         label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_labelSkillPoint);
-            make.left.equalTo(self.contentView).offset(lableX+lableWidth);
-            make.right.equalTo(self.contentView).offset(lableX+lableWidth*2);
+            make.top.equalTo(_labelSkillPoint).offset(ICON_HEIGH/2);
+            make.left.equalTo(self.contentView).offset(ICON_WIDE + 16);
+            //make.right.equalTo(self.contentView).offset(lableX+lableWidth*2);
         }];
         
         label;
@@ -108,9 +109,10 @@ NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCel
 
 #pragma mark - Public Method
 
-- (void)configureCellWithSkillPointItem:(DSTableSkillPointCellItem *)item {
-    //_coverView.image = [UIImage imageNamed:item.iconName];
-    
+- (void)configureCellWithSkillPointItem:(DSTableSkillPointSettingCellItem *)item {
+    _labelSkillTitle.text = item.skillName;
+    _labelSkillPoint.text = item.skillPoint;
+    _labelSkillDesc.text = item.skillDesc;
 }
 
 @end

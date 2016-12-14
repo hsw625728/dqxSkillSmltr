@@ -66,6 +66,15 @@
 }
 
 - (void)initData{
+    
+    //初始化全局特技点数静态数据
+    _gSkillInfo = [[DSGlobalSkillInfo alloc] init];
+    _gSkillInfo.typeName = SKILL_DETAIL_SECTION;
+    _gSkillInfo.skillPoint = SKILL_POINT_POINT;
+    _gSkillInfo.skillName = SKILL_POINT_NAME;
+    _gSkillInfo.skillDesc = SKILL_DETAIL_DESC;
+    _gSkillInfo.pointForLevel = [[NSDictionary alloc] initWithObjectsAndKeys:SKILL_POINT_FOR_LEVEL, nil];
+    
     //初始化核心全局数据
     NSString *docPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *path = [docPath stringByAppendingPathComponent:@"globalJobInfo"];
@@ -91,11 +100,6 @@
                      info9, @"魔法战士", info10, @"贤者", nil];
     }
     
-    //初始化全局特技点数静态数据
-    _gSkillInfo.typeName = SKILL_DETAIL_SECTION;
-    _gSkillInfo.skillName = SKILL_DETAIL_POTIN_AND_TITLE;
-    _gSkillInfo.skillPoint = SKILL_DETAIL_POTIN_AND_TITLE;
-    _gSkillInfo.skillDesc = SKILL_DETAIL_DESC;
 }
 
 

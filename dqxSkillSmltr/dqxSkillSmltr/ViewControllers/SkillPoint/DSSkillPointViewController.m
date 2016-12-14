@@ -53,10 +53,15 @@
     //设置导航栏
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:DSJobLevelSetting style:UIBarButtonItemStylePlain target:self action:@selector(navtoSettingJobLevel)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:DSJobLevelSetting style:UIBarButtonItemStylePlain target:self action:@selector(navtoSettingJobLevel)];
     
     [self initDatas];
     [self setupViews];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [_tableView reloadData];
 }
 #pragma mark - Private Method
 
@@ -117,13 +122,13 @@
     model.skillType4 = rowSkillType[indexPath.row][3];
     model.skillType5 = rowSkillType[indexPath.row][4];
     
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     DSGlobalJobInfo *jobInfo = appDelegate.gJobInfo[model.jobName];
-    model.skillPoint1 = jobInfo.skillPoint[model.skillType1];
-    model.skillPoint2 = jobInfo.skillPoint[model.skillType2];
-    model.skillPoint3 = jobInfo.skillPoint[model.skillType3];
-    model.skillPoint4 = jobInfo.skillPoint[model.skillType4];
-    model.skillPoint5 = jobInfo.skillPoint[model.skillType5];
+    model.skillPoint1 = jobInfo.skillPointSetting[model.skillType1];
+    model.skillPoint2 = jobInfo.skillPointSetting[model.skillType2];
+    model.skillPoint3 = jobInfo.skillPointSetting[model.skillType3];
+    model.skillPoint4 = jobInfo.skillPointSetting[model.skillType4];
+    model.skillPoint5 = jobInfo.skillPointSetting[model.skillType5];
     
     [(DSTableSkillPointCell *)cell configureCellWithSearchItem:(DSTableSkillPointCellItem *)model];
     return cell;
@@ -148,11 +153,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    NSString *jobNameSelect = rowJobNames[indexPath.section][indexPath.row];
     DSSkillPointSettingViewController *jlView = [[DSSkillPointSettingViewController alloc] init];
-    [jlView setJobForPointSetting:rowJobNames[indexPath.section][indexPath.row]];
-    [self.navigationController pushViewController:[[DSSkillPointSettingViewController alloc] init] animated:YES];
+    [jlView setJobForPointSetting:jobNameSelect];
+    [self.navigationController pushViewController:jlView animated:YES];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark UIselecter

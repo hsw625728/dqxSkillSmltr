@@ -15,6 +15,7 @@ NSString *const kDSTableJobLevelCellID = @"kDSTableJobLevelCellID";
 
 @interface DSTableJobLevelCell ()
 
+@property (strong, nonatomic) NSString *jobName;
 @property (strong, nonatomic) UIImageView *coverView;
 @property (strong, nonatomic) UIStepper *setView;
 @property (strong, nonatomic) UILabel *labelView;
@@ -119,13 +120,26 @@ NSString *const kDSTableJobLevelCellID = @"kDSTableJobLevelCellID";
 #pragma mark - Public Method
 
 - (void)configureCellWithJobLevelItem:(DSTableJobLevelCellItem *)item {
-    _coverView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@职业", item.jobName]];
+    _jobName = item.jobName;
+    _coverView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@职业", _jobName]];
     _setView.value = item.level;
     _labelView.text = @"等级：";
+    _levelView.text = [NSString stringWithFormat:@"%i", (int)item.level];
 }
 
 - (void)valueChanged:(UIStepper *)stepper{
     _levelView.text = [NSString stringWithFormat:@"%i", (int)stepper.value];
+    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+
+    DSGlobalJobInfo *value = appDelegate.gJobInfo[_jobName];
+    value.level = (int)stepper.value;
+    [value updateSkillPoint];
+    [appDelegate.gJobInfo setObject:value forKey:_jobName];
+    
+    //write file
+    NSString *docPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [docPath stringByAppendingPathComponent:@"globalJobInfo"];
+    [NSKeyedArchiver archiveRootObject:appDelegate.gJobInfo toFile:path];
 }
 
 - (NSInteger)getLevel{

@@ -25,7 +25,6 @@
 @implementation DSJobLevelSettingViewController{
     NSArray *sectionTitles;
     NSArray *rowImageNames;
-    NSMutableDictionary* jobLevels;
 }
 
 #pragma mark - Lifecycle
@@ -44,7 +43,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    jobLevels = [[NSMutableDictionary alloc] initWithCapacity:(10)];
     self.navigationItem.title = DSJobLevelSetting;
     
     [self setupViews];
@@ -52,8 +50,8 @@
     //设置导航栏
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:DSCancelStr style:UIBarButtonItemStylePlain target:self action:@selector(cancelSettingJobLevel)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:DSSaveStr style:UIBarButtonItemStyleDone target:self action:@selector(saveSettingJobLevel)];
+    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:DSCancelStr style:UIBarButtonItemStylePlain target:self action:@selector(cancelSettingJobLevel)];
+    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:DSSaveStr style:UIBarButtonItemStyleDone target:self action:@selector(saveSettingJobLevel)];
     
     [self initDatas];
     [self setupViews];
@@ -114,7 +112,6 @@
     model.level = value.level;
     
     [(DSTableJobLevelCell *)cell configureCellWithJobLevelItem:(DSTableJobLevelCellItem *)model];
-    [jobLevels setObject:cell forKey:rowImageNames[indexPath.section][indexPath.row]];
     return cell;
 }
 
@@ -142,22 +139,14 @@
 }
 
 #pragma mark UIselector
+/*
 - (void)cancelSettingJobLevel {
     [self.navigationController pushViewController:[[DSTabBarController alloc] init] animated:YES];
 }
 
 - (void)saveSettingJobLevel {
     //保存等级信息
-    AppDelegate *appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    NSArray *keysArray = [appDelegate.gJobInfo allKeys];
-    for (int i = 0; i < keysArray.count; i++)
-    {
-        NSString *key = keysArray[i];
-        DSGlobalJobInfo *value = appDelegate.gJobInfo[key];
-        DSTableJobLevelCell *cell = [jobLevels objectForKey:key];
-        value.level = [cell getLevel];
-        [appDelegate.gJobInfo setObject:value forKey:key];
-    }
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     //write file
     NSString *docPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -166,5 +155,6 @@
     
     [self.navigationController pushViewController:[[DSTabBarController alloc] init] animated:YES];
 }
+ */
 
 @end

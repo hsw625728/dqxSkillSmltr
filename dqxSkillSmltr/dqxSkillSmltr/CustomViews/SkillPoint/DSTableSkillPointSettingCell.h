@@ -13,13 +13,13 @@
 
 FOUNDATION_EXPORT NSString *const kDSTableSkillPointSettingCellID;
 
-@class DSTableSkillPointCellItem;
+@class DSTableSkillPointSettingCellItem;
 
 @interface DSTableSkillPointSettingCell : DSBaseCell
 
 + (CGFloat)cellHeight;
 
-- (void)configureCellWithSkillPointItem:(DSTableSkillPointCellItem *)item;
+- (void)configureCellWithSkillPointItem:(DSTableSkillPointSettingCellItem *)item;
 
 @end
 

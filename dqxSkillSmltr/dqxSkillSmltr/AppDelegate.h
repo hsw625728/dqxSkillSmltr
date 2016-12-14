@@ -14,7 +14,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, copy) NSMutableDictionary *gJobInfo;
-@property (nonatomic, copy) DSGlobalSkillInfo *gSkillInfo;
+@property (nonatomic, copy, readonly) DSGlobalSkillInfo *gSkillInfo;
 
 @end
 

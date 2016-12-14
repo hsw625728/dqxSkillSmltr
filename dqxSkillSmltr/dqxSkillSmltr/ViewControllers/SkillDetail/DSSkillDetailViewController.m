@@ -54,7 +54,7 @@
 #pragma mark - Private Method
 
 - (void)initDatas {
-    appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate =  (AppDelegate *) [[UIApplication sharedApplication] delegate];
 }
 
 - (void)setupViews {
