@@ -102,5 +102,41 @@
     
 }
 
+-(NSMutableDictionary*)getPointStateOfOtherJob:(NSString*)jobName skillType:(NSString*)skillType{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    NSArray *allKeys = [_gJobInfo allKeys];
+    
+    for (NSString *key in allKeys)
+    {
+        if([key isEqualToString:jobName])
+        {
+            continue;
+        }
+        DSGlobalJobInfo *jobInfo = _gJobInfo[key];
+        NSString *skillPoint = [jobInfo.skillPointSetting objectForKey:skillType];
+        if (!skillPoint)
+        {
+            continue;
+        }
+        [dic setObject:skillPoint forKey:jobInfo.jobName];
+    }
+    return dic;
+}
 
+-(NSInteger)getUsedPointOfOtherJob:(NSString*)jobName skillType:(NSString*)skillType{
+    NSInteger point = 0;
+    NSMutableDictionary *dic = [self getPointStateOfOtherJob:jobName skillType:skillType];
+    NSArray *allKeys = [dic allKeys];
+    for (NSString *key in allKeys)
+    {
+        point += [dic[key] intValue];
+    }
+    return point;
+}
+
+-(NSInteger)getUsedPointOfCurrentJob:(NSString*)jobName skillType:(NSString*)skillType{
+    DSGlobalJobInfo *jobInfo = _gJobInfo[jobName];
+    NSString *skillPoint = [jobInfo.skillPointSetting objectForKey:skillType];
+    return [skillPoint intValue];
+}
 @end

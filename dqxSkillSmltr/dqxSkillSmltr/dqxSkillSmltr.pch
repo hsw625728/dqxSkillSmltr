@@ -18,13 +18,4 @@
 #import "AppDelegate.h"
 #import <UIKit/UITableViewCell.h>
 
-// ENUM
-typedef NS_ENUM(NSUInteger, DSSkillType) {
-    DSSkillTypeJbo,
-    DSSkillTypeWeapon1,
-    DSSkillTypeWeapon2,
-    DSSkillTypeWeapon3,
-    DSSkillTypeWeapon4,
-};
-
 #endif /* dqxSkillSmltr_pch */

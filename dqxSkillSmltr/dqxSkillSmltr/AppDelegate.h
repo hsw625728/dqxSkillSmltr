@@ -16,5 +16,9 @@
 @property (nonatomic, copy) NSMutableDictionary *gJobInfo;
 @property (nonatomic, copy, readonly) DSGlobalSkillInfo *gSkillInfo;
 
+-(NSMutableDictionary*)getPointStateOfOtherJob:(NSString*)jobName skillType:(NSString*)skillType;
+-(NSInteger)getUsedPointOfOtherJob:(NSString*)jobName skillType:(NSString*)skillType;
+-(NSInteger)getUsedPointOfCurrentJob:(NSString*)jobName skillType:(NSString*)skillType;
+
 @end
 
