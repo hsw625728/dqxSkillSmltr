@@ -34,6 +34,7 @@
 		5847E08B1DFEC6C500995ABE /* DSGlobalJobInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E08A1DFEC6C500995ABE /* DSGlobalJobInfo.m */; };
 		5847E08E1E00090000995ABE /* DSTableSkillPointSettingCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E08D1E00090000995ABE /* DSTableSkillPointSettingCellItem.m */; };
 		5847E0911E0214C800995ABE /* DSTableSkillPointSettingUnusedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0901E0214C800995ABE /* DSTableSkillPointSettingUnusedCell.m */; };
+		5847E0941E02341B00995ABE /* DSTableSkillPointSettingFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0931E02341B00995ABE /* DSTableSkillPointSettingFooterCell.m */; };
 		58D40C2A1DFFB79700F9A520 /* DSGlobalSkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D40C291DFFB79700F9A520 /* DSGlobalSkillInfo.m */; };
 		EAE3AC85618B130CE7AE216A /* libPods-dqxSkillSmltr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */; };
 /* End PBXBuildFile section */
@@ -96,6 +97,8 @@
 		5847E08D1E00090000995ABE /* DSTableSkillPointSettingCellItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableSkillPointSettingCellItem.m; path = Models/DSTableSkillPointSettingCellItem.m; sourceTree = "<group>"; };
 		5847E08F1E0214B700995ABE /* DSTableSkillPointSettingUnusedCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSTableSkillPointSettingUnusedCell.h; path = CustomViews/SkillPoint/DSTableSkillPointSettingUnusedCell.h; sourceTree = "<group>"; };
 		5847E0901E0214C800995ABE /* DSTableSkillPointSettingUnusedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableSkillPointSettingUnusedCell.m; path = CustomViews/SkillPoint/DSTableSkillPointSettingUnusedCell.m; sourceTree = "<group>"; };
+		5847E0921E02340E00995ABE /* DSTableSkillPointSettingFooterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSTableSkillPointSettingFooterCell.h; path = CustomViews/SkillPoint/DSTableSkillPointSettingFooterCell.h; sourceTree = "<group>"; };
+		5847E0931E02341B00995ABE /* DSTableSkillPointSettingFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableSkillPointSettingFooterCell.m; path = CustomViews/SkillPoint/DSTableSkillPointSettingFooterCell.m; sourceTree = "<group>"; };
 		58D40C281DFFB77300F9A520 /* DSGlobalSkillInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSGlobalSkillInfo.h; path = Models/DSGlobalSkillInfo.h; sourceTree = "<group>"; };
 		58D40C291DFFB79700F9A520 /* DSGlobalSkillInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSGlobalSkillInfo.m; path = Models/DSGlobalSkillInfo.m; sourceTree = "<group>"; };
 		CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dqxSkillSmltr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -312,6 +315,8 @@
 				5847E0871DFE9E7500995ABE /* DSTableSkillPointSettingCell.m */,
 				5847E08F1E0214B700995ABE /* DSTableSkillPointSettingUnusedCell.h */,
 				5847E0901E0214C800995ABE /* DSTableSkillPointSettingUnusedCell.m */,
+				5847E0921E02340E00995ABE /* DSTableSkillPointSettingFooterCell.h */,
+				5847E0931E02341B00995ABE /* DSTableSkillPointSettingFooterCell.m */,
 			);
 			name = SkillPoint;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 			files = (
 				5847E0431DF7B71400995ABE /* DSSkillDetailViewController.m in Sources */,
 				5847E0711DF964D700995ABE /* DSJobSkillPointViewController.m in Sources */,
+				5847E0941E02341B00995ABE /* DSTableSkillPointSettingFooterCell.m in Sources */,
 				5847E0771DFE3E6600995ABE /* DSTableJobLevelCell.m in Sources */,
 				58D40C2A1DFFB79700F9A520 /* DSGlobalSkillInfo.m in Sources */,
 				5847E0911E0214C800995ABE /* DSTableSkillPointSettingUnusedCell.m in Sources */,

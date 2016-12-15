@@ -11,6 +11,7 @@
 #import "View+MASAdditions.h"
 #import "DSTableSkillPointSettingCell.h"
 #import "DSTableSkillPointSettingUnusedCell.h"
+#import "DSTableSkillPointSettingFooterCell.h"
 #import "DSTableSkillPointSettingCellItem.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "DSSkillPointSettingViewController.h"
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) DZNSegmentedControl *segmentedControl;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
+@property (strong, nonatomic) UIStepper *pointStepper;
 
 @end
 
@@ -67,6 +69,8 @@
     NSString *titleStr = [[NSString alloc] initWithFormat:@"%i/%i", (int)jobInfo.unusePoint, (int)jobInfo.totelPoint];
     self.navigationItem.title = titleStr;
     
+    _pointStepper = [[UIStepper alloc] init];
+    
     _segmentedControl = ({
         DSGlobalJobInfo *jobInfo = appDelegate.gJobInfo[_jobName];
         
@@ -95,6 +99,7 @@
         tableView.delegate = self;
         [tableView registerClass:[DSTableSkillPointSettingCell class] forCellReuseIdentifier:kDSTableSkillPointSettingCellID];
         [tableView registerClass:[DSTableSkillPointSettingUnusedCell class] forCellReuseIdentifier:kDSTableSkillPointSettingUnusedCellID];
+        [tableView registerClass:[DSTableSkillPointSettingFooterCell class] forHeaderFooterViewReuseIdentifier:kDSTableSkillPointSettingFooterCellID];
         
         tableView.tableFooterView = [UIView new];
         tableView.emptyDataSetSource = self;
@@ -106,6 +111,7 @@
         
         tableView;
     });
+    
     
     _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.hidesWhenStopped = YES;
@@ -136,7 +142,7 @@
     } else if (control.selectedSegmentIndex == 4) {
         _skillType = jobInfo.skillWeapon4;
     }
-    [self.tableView reloadData];
+    [self updateCurrentView];
 }
 
 
@@ -149,7 +155,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+    
     int index = 0;
     NSArray *aName = appDelegate.gSkillInfo.skillName;
     for (;index < aName.count; index++)
@@ -178,8 +184,21 @@
 
 #pragma mark UITableViewDelegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return [DSTableSkillPointSettingFooterCell viewHeight];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [DSTableSkillPointSettingCell cellHeight];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    DSTableSkillPointSettingFooterCell *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kDSTableSkillPointSettingFooterCellID];
+    NSArray *strList = [self getPointSourceStr];
+    view.firstLabel.text = [strList objectAtIndex:0];
+    view.secondLabel.text = [strList objectAtIndex:1];
+    
+    return view;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -203,8 +222,6 @@
     model.skillDesc = arrayDesc[indexPath.row];
     
     [(DSTableSkillPointSettingCell *)cell configureCellWithSkillPointItem:(DSTableSkillPointSettingCellItem *)model];
-
-     
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -217,7 +234,7 @@
     NSInteger usedPointOfOtherJob = [appDelegate getUsedPointOfOtherJob:_jobName skillType:_skillType];
     NSInteger usedPointOfCurrentJob = [appDelegate getUsedPointOfCurrentJob:_jobName skillType:_skillType];
     NSInteger needPoint = [model.skillPoint intValue] - usedPointOfOtherJob - usedPointOfCurrentJob;
-    if (jobInfo.unusePoint >= needPoint && needPoint >= 0)
+    if (jobInfo.unusePoint >= needPoint && (needPoint + usedPointOfCurrentJob) >= 0)
     {
         //这里有个奇怪的BUG，求指导，哪位大侠看到了，解决方案请发送以下邮箱：
         //hsw625728@163.com
@@ -237,14 +254,14 @@
         NSString *path = [docPath stringByAppendingPathComponent:@"globalJobInfo"];
         [NSKeyedArchiver archiveRootObject:appDelegate.gJobInfo toFile:path];
     }
-    else if (needPoint >= 0){
+    else if ((needPoint + usedPointOfCurrentJob)  >= 0){
         //这里需要提示框：技能点数不足！
         [self showHUDWithText:@"技能点数不足！" delay:2];
     }
     
     NSString *titleStr = [[NSString alloc] initWithFormat:@"%i/%i", (int)jobInfo.unusePoint, (int)jobInfo.totelPoint];
     self.navigationItem.title = titleStr;
-    [_tableView reloadData];
+    [self updateCurrentView];
 }
 
 -(DSTableSkillPointSettingCellItem*)getSelectSkillPointItemInfo:(NSIndexPath *)indexPath {
@@ -273,4 +290,28 @@
     _jobName = job;
 }
 
+-(NSArray*)getPointSourceStr{
+    NSString* strFirst = [[NSString alloc] init];
+    NSString* strSecond = [[NSString alloc] init];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    dic = [appDelegate getPointStateOfOtherJob:_jobName skillType:_skillType];
+    NSArray *keys = [dic allKeys];
+    for (NSInteger i = 0; i < keys.count; i++)// NSString *key in keys)
+    {
+        if (i % 2 == 0)
+        {
+            strFirst = [strFirst stringByAppendingFormat:@"%@加点%@    ", [keys objectAtIndex:i], dic[[keys objectAtIndex:i]]];
+        }
+        else
+        {
+            strSecond = [strSecond stringByAppendingFormat:@"%@加点%@    ", [keys objectAtIndex:i], dic[[keys objectAtIndex:i]]];
+        }
+    }
+    NSArray *temp = [[NSArray alloc] initWithObjects:strFirst, strSecond, nil];
+    return temp;
+}
+
+-(void)updateCurrentView{
+    [_tableView reloadData];
+}
 @end
