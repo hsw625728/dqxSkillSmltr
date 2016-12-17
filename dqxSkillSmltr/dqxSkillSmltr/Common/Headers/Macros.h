@@ -86,8 +86,8 @@ level:10 \
 sJob:@"气力" \
 weapon1:@"爪" \
 weapon2:@"棍" \
-weapon3:@"扇" \
-weapon4:@"格斗"]
+weapon3:@"格斗" \
+weapon4:@"扇"]
 
 #define JOB_SKILL_TYPE_LXYR [[DSGlobalJobInfo alloc] \
 initMine:@"旅行艺人" \
@@ -104,8 +104,8 @@ level:10 \
 sJob:@"宝物" \
 weapon1:@"短剑" \
 weapon2:@"爪" \
-weapon3:@"鞭" \
-weapon4:@"格斗"]
+weapon3:@"格斗" \
+weapon4:@"鞭"]
 
 #define JOB_SKILL_TYPE_SQS [[DSGlobalJobInfo alloc] \
 initMine:@"圣骑士" \
@@ -120,10 +120,10 @@ weapon4:@"盾"]
 initMine:@"游侠" \
 level:10 \
 sJob:@"生存" \
-weapon1:@"斧" \
+weapon1:@"格斗" \
 weapon2:@"弓" \
 weapon3:@"回旋镖" \
-weapon4:@"格斗"]
+weapon4:@"斧"]
 
 #define JOB_SKILL_TYPE_MFZS [[DSGlobalJobInfo alloc] \
 initMine:@"魔法战士" \
@@ -153,11 +153,11 @@ weapon4:@"盾"]
 #define JOB_SKILL_TYPE                  @[@[@"勇敢", @"单手剑", @"双手剑", @"斧", @"盾"],\
 @[@"魔法", @"短剑", @"双手杖", @"盾", @"鞭"],\
 @[@"信仰", @"短杖", @"矛", @"盾", @"棍"],\
-@[@"气力", @"爪", @"棍", @"扇", @"格斗"],\
+@[@"气力", @"爪", @"棍", @"格斗", @"扇"],\
 @[@"曲艺", @"短剑", @"扇", @"盾", @"棍"],\
-@[@"宝物", @"短剑", @"爪", @"鞭", @"格斗"],\
+@[@"宝物", @"短剑", @"爪", @"格斗", @"鞭"],\
 @[@"博爱", @"短杖", @"矛", @"锤", @"盾"],\
-@[@"生存", @"斧", @"弓", @"回旋镖", @"格斗"],\
+@[@"生存", @"格斗", @"弓", @"回旋镖", @"斧"],\
 @[@"源力", @"单手剑", @"双手杖", @"弓", @"盾"],\
 @[@"悟性", @"双手杖", @"弓", @"回旋镖", @"盾"]]
 #define JOB_SKILL_POINT                 @[@[@"0/0", @"0/0", @"0/0", @"0/0", @"0/0"],\

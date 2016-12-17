@@ -278,8 +278,6 @@
 			children = (
 				5847E0501DF7E65E00995ABE /* DSBaseCell.h */,
 				5847E0511DF7E66F00995ABE /* DSBaseCell.m */,
-				5847E0561DF7E7A400995ABE /* DSTableDetailCell.h */,
-				5847E0571DF7E7B000995ABE /* DSTableDetailCell.m */,
 				5847E05F1DF7FCC300995ABE /* DSTableHeaderView.h */,
 				5847E0601DF7FCD800995ABE /* DSTableHeaderView.m */,
 			);
@@ -324,6 +322,8 @@
 		5847E0541DF7E6F000995ABE /* SkillDetail */ = {
 			isa = PBXGroup;
 			children = (
+				5847E0561DF7E7A400995ABE /* DSTableDetailCell.h */,
+				5847E0571DF7E7B000995ABE /* DSTableDetailCell.m */,
 			);
 			name = SkillDetail;
 			sourceTree = "<group>";

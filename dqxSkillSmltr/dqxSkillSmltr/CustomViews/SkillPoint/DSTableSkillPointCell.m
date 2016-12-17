@@ -16,6 +16,7 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
 @interface DSTableSkillPointCell ()
 
 @property (strong, nonatomic) UIImageView *coverView;
+@property (strong, nonatomic) UILabel *labelLevel;
 @property (strong, nonatomic) UILabel *labelSkillType1;
 @property (strong, nonatomic) UILabel *labelSkillType2;
 @property (strong, nonatomic) UILabel *labelSkillType3;
@@ -34,7 +35,8 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
 #pragma mark - Class Method
 
 + (CGFloat)cellHeight {
-    return 48;
+    //这里根据屏幕尺寸来设置高度
+    return 38;
 }
 
 #pragma mark - View Lifecycle
@@ -75,13 +77,28 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
         [self.contentView addSubview:imageView];
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.sizeOffset(CGSizeMake(ICON_WIDE, ICON_HEIGH));
-            make.centerY.equalTo(self.contentView);
+            make.centerY.equalTo(self.contentView).offset(2);
             make.left.equalTo(self.contentView).offset(8);
         }];
         
         imageView;
     });
     
+    _labelLevel = ({
+        UILabel *label = [UILabel new];
+        label.backgroundColor = [UIColor whiteColor];
+        label.font = FontWithSize(8);
+        label.textColor = DSLightBlackTextColor;
+        [self.contentView addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.contentView).offset(1);
+            make.left.equalTo(self.contentView).offset(0.5*ICON_WIDE);
+            make.right.equalTo(self.contentView).offset(ICON_WIDE);
+        }];
+        
+        label;
+    });
+#define LABEL_SKILL_TYPE_TOP_SET make.top.equalTo(self.contentView).offset(6)
     _labelSkillType1 = ({
         UILabel *label = [UILabel new];
         label.backgroundColor = [UIColor whiteColor];
@@ -89,7 +106,7 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
         label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_coverView);
+            LABEL_SKILL_TYPE_TOP_SET;
             make.left.equalTo(self.contentView).offset(lableX);
             make.right.equalTo(self.contentView).offset(lableX+lableWidth);
         }];
@@ -104,7 +121,7 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
         label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_coverView);
+            LABEL_SKILL_TYPE_TOP_SET;
             make.left.equalTo(self.contentView).offset(lableX+lableWidth);
             make.right.equalTo(self.contentView).offset(lableX+lableWidth*2);
         }];
@@ -119,7 +136,7 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
         label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_coverView);
+            LABEL_SKILL_TYPE_TOP_SET;
             make.left.equalTo(self.contentView).offset(lableX+lableWidth*2);
             make.right.equalTo(self.contentView).offset(lableX+lableWidth*3);
         }];
@@ -134,7 +151,7 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
         label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_coverView);
+            LABEL_SKILL_TYPE_TOP_SET;
             make.left.equalTo(self.contentView).offset(lableX+lableWidth*3);
             make.right.equalTo(self.contentView).offset(lableX+lableWidth*4);
         }];
@@ -149,7 +166,7 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
         label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_coverView);
+            LABEL_SKILL_TYPE_TOP_SET;
             make.left.equalTo(self.contentView).offset(lableX+lableWidth*4);
             make.right.equalTo(self.contentView);
         }];
@@ -226,12 +243,22 @@ NSString *const kDSTableSkillPointCellID = @"kDSTableSkillPointCellID";
         
         label;
     });
+    
+    UIImageView *forwardView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"forward_info"]];
+    [self.contentView addSubview:forwardView];
+    [forwardView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.sizeOffset(CGSizeMake(6, 10));
+        make.centerY.equalTo(self.contentView);
+        //make.left.greaterThanOrEqualTo(_titleLabel.mas_right).offset(8);
+        make.right.equalTo(self.contentView).offset(-8);
+    }];
 }
 
 #pragma mark - Public Method
 
 - (void)configureCellWithSearchItem:(DSTableSkillPointCellItem *)item {
     _coverView.image = [UIImage imageNamed:item.iconName];
+    _labelLevel.text = [NSString stringWithFormat:@"等级:%@", item.level];
     _labelSkillType1.text = item.skillType1;
     _labelSkillType2.text = item.skillType2;
     _labelSkillType3.text = item.skillType3;

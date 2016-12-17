@@ -124,6 +124,7 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     DSGlobalJobInfo *jobInfo = appDelegate.gJobInfo[model.jobName];
+    model.level = [NSString stringWithFormat:@"%i", (int)jobInfo.level];
     model.skillPoint1 = jobInfo.skillPointSetting[model.skillType1];
     model.skillPoint2 = jobInfo.skillPointSetting[model.skillType2];
     model.skillPoint3 = jobInfo.skillPointSetting[model.skillType3];

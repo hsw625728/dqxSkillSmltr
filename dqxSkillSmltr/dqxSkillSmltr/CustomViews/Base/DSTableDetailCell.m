@@ -15,9 +15,9 @@ NSString *const kDSTableDetailCellID = @"kDSTableDetailCellID";
 
 @interface DSTableDetailCell ()
 
-@property (strong, nonatomic) UIImageView *coverView;
-@property (strong, nonatomic) UILabel *titleLabel;
-@property (strong, nonatomic) UILabel *contentLabel;
+@property (strong, nonatomic) UILabel *labelSkillPoint;
+@property (strong, nonatomic) UILabel *labelSkillTitle;
+@property (strong, nonatomic) UILabel *labelSkillDesc;
 
 @end
 
@@ -26,7 +26,7 @@ NSString *const kDSTableDetailCellID = @"kDSTableDetailCellID";
 #pragma mark - Class Method
 
 + (CGFloat)cellHeight {
-    return 64;
+    return 40;
 }
 
 #pragma mark - View Lifecycle
@@ -43,69 +43,77 @@ NSString *const kDSTableDetailCellID = @"kDSTableDetailCellID";
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-    _coverView.image = nil;
 }
 
 #pragma mark - Private Method
 
 - (void)setupViews {
-    if (_coverView) {
-        return;
-    }
-    
+    const int ICON_WIDE = 38;
+    const int ICON_HEIGH = 38;
     self.accessoryType = UITableViewCellAccessoryNone;
     self.contentView.backgroundColor = [UIColor whiteColor];
     
-    _coverView = ({
-        UIImageView *imageView = [UIImageView new];
-        imageView.backgroundColor = [UIColor whiteColor];
-        [self.contentView addSubview:imageView];
-        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.sizeOffset(CGSizeMake(48, 48));
+    //CGFloat contentViewWidth = CGRectGetWidth([UIScreen mainScreen ].applicationFrame);
+    //CGFloat lableX = ICON_WIDE + 8*2;
+    
+    _labelSkillPoint = ({
+        UILabel *label = [UILabel new];
+        label.backgroundColor = [UIColor whiteColor];
+        label.font = FontWithSize(26);
+        label.textAlignment = NSTextAlignmentCenter;
+        label.textColor = DSLightBlackTextColor;
+        [self.contentView addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.sizeOffset(CGSizeMake(ICON_WIDE+8, ICON_HEIGH));
+            make.top.equalTo(self.contentView).offset(1);
             make.centerY.equalTo(self.contentView);
             make.left.equalTo(self.contentView).offset(8);
         }];
         
-        imageView;
+        label;
     });
     
-    _titleLabel = ({
+    
+    _labelSkillTitle = ({
         UILabel *label = [UILabel new];
         label.backgroundColor = [UIColor whiteColor];
         label.font = FontWithSize(13);
         label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_coverView);
-            make.left.equalTo(_coverView.mas_right).offset(8);
-            make.right.equalTo(self.contentView);
+            make.top.equalTo(self.contentView).offset(1);
+            make.left.equalTo(self.contentView).offset(ICON_WIDE + 16);
+            //make.right.equalTo(self.contentView).offset();
         }];
         
         label;
     });
     
-    _contentLabel = ({
+    
+    _labelSkillDesc = ({
         UILabel *label = [UILabel new];
         label.backgroundColor = [UIColor whiteColor];
-        label.font = FontWithSize(13);
+        label.font = FontWithSize(9);
         label.textColor = DSLightBlackTextColor;
+        label.numberOfLines = 2;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(_titleLabel);
-            make.bottom.equalTo(_coverView);
+            make.top.equalTo(self.contentView).offset(ICON_HEIGH/2 - 2);
+            make.left.equalTo(self.contentView).offset(ICON_WIDE + 16);
+            make.right.equalTo(self.contentView).offset(-8);
         }];
         
         label;
     });
+
 }
 
 #pragma mark - Public Method
 
 - (void)configureCellWithSearchItem:(DSSkillDetailItem *)item {
-    //[_coverView mlb_sd_setImageWithURL:@"section2"/*item.iconName*/ placeholderImageName:@"section1"];
-    _coverView.image = [UIImage imageNamed:item.iconName];
-    _titleLabel.text = item.itemName;
-    _contentLabel.text = item.itemMemo;
+    _labelSkillTitle.text = item.skillName;
+    _labelSkillPoint.text = item.skillPoint;
+    _labelSkillDesc.text = item.skillDesc;
 }
 
 @end

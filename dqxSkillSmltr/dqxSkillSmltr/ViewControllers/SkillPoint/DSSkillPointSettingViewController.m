@@ -66,7 +66,7 @@
 
 - (void)setupViews {
     DSGlobalJobInfo *jobInfo = appDelegate.gJobInfo[_jobName];
-    NSString *titleStr = [[NSString alloc] initWithFormat:@"%i/%i", (int)jobInfo.unusePoint, (int)jobInfo.totelPoint];
+    NSString *titleStr = [[NSString alloc] initWithFormat:@"点数:%i", (int)jobInfo.unusePoint/*, (int)jobInfo.totelPoint*/];
     self.navigationItem.title = titleStr;
     
     _pointStepper = [[UIStepper alloc] init];
@@ -195,8 +195,17 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     DSTableSkillPointSettingFooterCell *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kDSTableSkillPointSettingFooterCellID];
     NSArray *strList = [self getPointSourceStr];
-    view.firstLabel.text = [strList objectAtIndex:0];
-    view.secondLabel.text = [strList objectAtIndex:1];
+    for (NSInteger i = 0; i < view.labelArray.count; i++)
+    {
+        if (i < strList.count)
+            ((UILabel*)view.labelArray[i]).text = strList[i];
+        else
+            ((UILabel*)view.labelArray[i]).text = @"";
+    }
+    DSGlobalJobInfo *jobInfo = [[DSGlobalJobInfo alloc] init];
+    jobInfo = appDelegate.gJobInfo[_jobName];
+    view.step.maximumValue = jobInfo.unusePoint + [appDelegate getUsedPointOfCurrentJob:_jobName skillType:_skillType];
+    view.step.value = [appDelegate getUsedPointOfCurrentJob:_jobName skillType:_skillType];
     
     return view;
 }
@@ -259,7 +268,7 @@
         [self showHUDWithText:@"技能点数不足！" delay:2];
     }
     
-    NSString *titleStr = [[NSString alloc] initWithFormat:@"%i/%i", (int)jobInfo.unusePoint, (int)jobInfo.totelPoint];
+    NSString *titleStr = [[NSString alloc] initWithFormat:@"剩余点数:%i", (int)jobInfo.unusePoint/*, (int)jobInfo.totelPoint*/];
     self.navigationItem.title = titleStr;
     [self updateCurrentView];
 }
@@ -291,27 +300,65 @@
 }
 
 -(NSArray*)getPointSourceStr{
-    NSString* strFirst = [[NSString alloc] init];
-    NSString* strSecond = [[NSString alloc] init];
+    NSMutableArray *temp = [[NSMutableArray alloc] init];
+    
+    //获取其他职业加点信息
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     dic = [appDelegate getPointStateOfOtherJob:_jobName skillType:_skillType];
     NSArray *keys = [dic allKeys];
-    for (NSInteger i = 0; i < keys.count; i++)// NSString *key in keys)
+    NSInteger i = 0;
+    for ( ; i < keys.count; i++)// NSString *key in keys)
     {
-        if (i % 2 == 0)
-        {
-            strFirst = [strFirst stringByAppendingFormat:@"%@加点%@    ", [keys objectAtIndex:i], dic[[keys objectAtIndex:i]]];
-        }
-        else
-        {
-            strSecond = [strSecond stringByAppendingFormat:@"%@加点%@    ", [keys objectAtIndex:i], dic[[keys objectAtIndex:i]]];
-        }
+        [temp setObject:[NSString stringWithFormat:@"%@:%@", [keys objectAtIndex:i], dic[[keys objectAtIndex:i]]] atIndexedSubscript:i];
     }
-    NSArray *temp = [[NSArray alloc] initWithObjects:strFirst, strSecond, nil];
+    
+    //获取当前职业加点信息
+    NSInteger curPoint = [appDelegate getUsedPointOfCurrentJob:_jobName skillType:_skillType];
+    [temp setObject:[NSString stringWithFormat:@"%@:%i", _jobName, (int)curPoint] atIndexedSubscript:i];
+    
     return temp;
 }
 
 -(void)updateCurrentView{
     [_tableView reloadData];
 }
+
+- (void)valueChanged:(UIStepper *)stepper{
+    //职业名称  特技类型  特技点数  剩余点数
+    DSGlobalJobInfo *jobInfo = [[DSGlobalJobInfo alloc] init];
+    jobInfo = appDelegate.gJobInfo[_jobName];
+    
+    //NSInteger usedPointOfOtherJob = [appDelegate getUsedPointOfOtherJob:_jobName skillType:_skillType];
+    NSInteger usedPointOfCurrentJob = [appDelegate getUsedPointOfCurrentJob:_jobName skillType:_skillType];
+    NSInteger needPoint = stepper.value /*- usedPointOfOtherJob*/ - usedPointOfCurrentJob;
+    if (jobInfo.unusePoint >= needPoint && (needPoint + usedPointOfCurrentJob) >= 0)
+    {
+        //这里有个奇怪的BUG，求指导，哪位大侠看到了，解决方案请发送以下邮箱：
+        //hsw625728@163.com
+        //感激不尽
+        //--崩溃代码--
+        //[jobInfo.skillPointSetting setObject:model.skillPoint forKey:skillTypeStr];
+        //--以下是一个笨的解决方案
+        NSMutableDictionary *temp = [[NSMutableDictionary alloc] initWithDictionary:jobInfo.skillPointSetting];
+        [temp setObject:[NSString stringWithFormat:@"%i", ((int)needPoint + (int)usedPointOfCurrentJob)] forKey:_skillType];
+        jobInfo.skillPointSetting = temp;
+        //----------------------
+        [jobInfo updateSkillPoint];
+        
+        [appDelegate.gJobInfo setObject:jobInfo forKey:_jobName];
+        
+        NSString *docPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        NSString *path = [docPath stringByAppendingPathComponent:@"globalJobInfo"];
+        [NSKeyedArchiver archiveRootObject:appDelegate.gJobInfo toFile:path];
+    }
+    else if ((needPoint + usedPointOfCurrentJob)  >= 0){
+        //这里需要提示框：技能点数不足！
+        [self showHUDWithText:@"技能点数不足！" delay:2];
+    }
+    
+    NSString *titleStr = [[NSString alloc] initWithFormat:@"剩余点数:%i", (int)jobInfo.unusePoint/*, (int)jobInfo.totelPoint*/];
+    self.navigationItem.title = titleStr;
+    [self updateCurrentView];
+}
+
 @end

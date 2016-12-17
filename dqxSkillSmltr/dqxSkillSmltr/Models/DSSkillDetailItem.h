@@ -11,9 +11,9 @@
 
 @interface DSSkillDetailItem : NSObject
 
-@property (nonatomic, copy) NSString *itemName;
-@property (nonatomic, copy) NSString *iconName;
-@property (nonatomic, copy) NSString *itemMemo;
+@property (nonatomic, copy) NSString *skillName;
+@property (nonatomic, copy) NSString *skillPoint;
+@property (nonatomic, copy) NSString *skillDesc;
 
 @end
 

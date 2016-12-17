@@ -14,6 +14,7 @@
 @interface DSSkillPointSettingViewController : DSBaseViewController
 
 -(void)setJobForPointSetting:(NSString*)job;
+- (void)valueChanged:(UIStepper *)stepper;
 
 @end
 

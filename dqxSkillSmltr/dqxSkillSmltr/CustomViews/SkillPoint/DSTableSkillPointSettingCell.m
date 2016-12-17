@@ -26,7 +26,7 @@ NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCel
 #pragma mark - Class Method
 
 + (CGFloat)cellHeight {
-    return 50;
+    return 40;
 }
 
 #pragma mark - View Lifecycle
@@ -48,8 +48,8 @@ NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCel
 #pragma mark - Private Method
 
 - (void)setupViews {
-    const int ICON_WIDE = 48;
-    const int ICON_HEIGH = 48;
+    const int ICON_WIDE = 38;
+    const int ICON_HEIGH = 38;
     self.accessoryType = UITableViewCellAccessoryNone;
     self.contentView.backgroundColor = [UIColor whiteColor];
     
@@ -64,7 +64,7 @@ NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCel
         label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.size.sizeOffset(CGSizeMake(ICON_WIDE, ICON_HEIGH));
+            make.size.sizeOffset(CGSizeMake(ICON_WIDE+8, ICON_HEIGH));
             make.top.equalTo(self.contentView).offset(1);
             make.centerY.equalTo(self.contentView);
             make.left.equalTo(self.contentView).offset(8);
@@ -81,7 +81,7 @@ NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCel
         label.textColor = DSLightBlackTextColor;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_labelSkillPoint).offset(1);
+            make.top.equalTo(self.contentView).offset(1);
             make.left.equalTo(self.contentView).offset(ICON_WIDE + 16);
             //make.right.equalTo(self.contentView).offset();
         }];
@@ -93,13 +93,14 @@ NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCel
     _labelSkillDesc = ({
         UILabel *label = [UILabel new];
         label.backgroundColor = [UIColor whiteColor];
-        label.font = FontWithSize(13);
+        label.font = FontWithSize(9);
         label.textColor = DSLightBlackTextColor;
+        label.numberOfLines = 2;
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_labelSkillPoint).offset(ICON_HEIGH/2);
+            make.top.equalTo(self.contentView).offset(ICON_HEIGH/2 - 2);
             make.left.equalTo(self.contentView).offset(ICON_WIDE + 16);
-            //make.right.equalTo(self.contentView).offset(lableX+lableWidth*2);
+            make.right.equalTo(self.contentView).offset(-8);
         }];
         
         label;

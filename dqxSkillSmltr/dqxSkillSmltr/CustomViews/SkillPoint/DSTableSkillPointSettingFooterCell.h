@@ -17,8 +17,18 @@ FOUNDATION_EXPORT NSString *const kDSTableSkillPointSettingFooterCellID;
 
 + (CGFloat)viewHeight;
 
-@property (strong, nonatomic) UILabel *firstLabel;
-@property (strong, nonatomic) UILabel *secondLabel;
+@property (strong, nonatomic) NSArray *labelArray;
+@property (strong, nonatomic) UIStepper *step;
+@property (strong, nonatomic) UILabel *label1;
+@property (strong, nonatomic) UILabel *label2;
+@property (strong, nonatomic) UILabel *label3;
+@property (strong, nonatomic) UILabel *label4;
+@property (strong, nonatomic) UILabel *label5;
+@property (strong, nonatomic) UILabel *label6;
+@property (strong, nonatomic) UILabel *label7;
+@property (strong, nonatomic) UILabel *label8;
+@property (strong, nonatomic) UILabel *label9;
+@property (strong, nonatomic) UILabel *label10;
 
 @end
 

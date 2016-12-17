@@ -13,6 +13,7 @@
 
 @property (nonatomic, copy) NSString *jobName;
 @property (nonatomic, copy) NSString *iconName;
+@property (nonatomic, copy) NSString *level;
 @property (nonatomic, copy) NSString *skillType1;
 @property (nonatomic, copy) NSString *skillType2;
 @property (nonatomic, copy) NSString *skillType3;

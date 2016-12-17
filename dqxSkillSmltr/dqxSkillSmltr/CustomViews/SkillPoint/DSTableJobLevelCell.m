@@ -91,6 +91,7 @@ NSString *const kDSTableJobLevelCellID = @"kDSTableJobLevelCellID";
     _levelView = ({
         UITextField *text = [[UITextField alloc] init];
         text.borderStyle = UITextBorderStyleRoundedRect;
+        text.enabled = false;
         [self.contentView addSubview:text];
         [text mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.sizeOffset(CGSizeMake(lableWidth, ICON_HEIGH));
@@ -123,7 +124,7 @@ NSString *const kDSTableJobLevelCellID = @"kDSTableJobLevelCellID";
     _jobName = item.jobName;
     _coverView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@职业", _jobName]];
     _setView.value = item.level;
-    _labelView.text = @"等级：";
+    _labelView.text = @"等级:";
     _levelView.text = [NSString stringWithFormat:@"%i", (int)item.level];
 }
 

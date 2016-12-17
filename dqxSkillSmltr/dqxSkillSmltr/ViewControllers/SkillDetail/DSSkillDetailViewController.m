@@ -100,9 +100,9 @@
     DSTableDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:kDSTableDetailCellID forIndexPath:indexPath];
     
     DSSkillDetailItem *model = [[DSSkillDetailItem alloc] init];
-    model.itemName = appDelegate.gSkillInfo.skillName[indexPath.section][indexPath.row];
-    model.iconName = [NSString stringWithFormat:@"Icon-%@", model.itemName];
-    model.itemMemo = appDelegate.gSkillInfo.skillDesc[indexPath.section][indexPath.row];
+    model.skillName = appDelegate.gSkillInfo.skillName[indexPath.section][indexPath.row];
+    model.skillPoint = appDelegate.gSkillInfo.skillPoint[indexPath.section][indexPath.row];
+    model.skillDesc = appDelegate.gSkillInfo.skillDesc[indexPath.section][indexPath.row];
     [(DSTableDetailCell *)cell configureCellWithSearchItem:(DSSkillDetailItem *)model];
     return cell;
 }
