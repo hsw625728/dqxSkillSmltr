@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DSTabBarController.h"
 #import "DSSkillPointViewController.h"
-#import "DSSkillHistoryViewController.h"
+#import "DSAppSettingViewController.h"
 #import "DSSkillDetailViewController.h"
 
 
@@ -32,9 +32,9 @@
         UINavigationController *cateNavigationController1 = [[UINavigationController alloc] initWithRootViewController:cateViewController1];
         cateNavigationController1.title = DSSkillDetail;
         
-        DSSkillHistoryViewController *cateViewController3 = [[DSSkillHistoryViewController alloc] init];
+        DSAppSettingViewController *cateViewController3 = [[DSAppSettingViewController alloc] init];
         UINavigationController *cateNavigationController3 = [[UINavigationController alloc] initWithRootViewController:cateViewController3];
-        cateNavigationController3.title = DSSkillHistory;
+        cateNavigationController3.title = DSAppSetting;
         
         [self setViewControllers:@[cateNavigationController, cateNavigationController1, cateNavigationController3]];
         

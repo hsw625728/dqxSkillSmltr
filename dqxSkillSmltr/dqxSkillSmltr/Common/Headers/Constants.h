@@ -32,7 +32,7 @@
 //Title
 #define DSSkillPoint @"加点模拟"
 #define DSSkillDetail @"特技列表"
-#define DSSkillHistory @"其 他"
+#define DSAppSetting @"其他设置"
 #define DSJobLevelSetting @"等级设置"
 
 // Hint

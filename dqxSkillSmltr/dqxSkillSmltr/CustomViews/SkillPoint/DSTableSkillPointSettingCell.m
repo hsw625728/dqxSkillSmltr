@@ -26,7 +26,7 @@ NSString *const kDSTableSkillPointSettingCellID = @"kDSTableSkillPointSettingCel
 #pragma mark - Class Method
 
 + (CGFloat)cellHeight {
-    return 40;
+    return 39;
 }
 
 #pragma mark - View Lifecycle

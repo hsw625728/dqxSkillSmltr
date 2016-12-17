@@ -52,6 +52,9 @@
 
 #define ISNULL(x) (x?((id)x==(id)[NSNull null]):true)
 
+//当前技能点数的最大值
+#define CURRENT_MAX_SKILL_POINT_OF_SKILL_TYPE 100
+
 //全局数据初始化
 #define JOB_SKILL_TYPE_ZS [[DSGlobalJobInfo alloc] \
 initMine:@"战士" \

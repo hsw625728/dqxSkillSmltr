@@ -15,7 +15,6 @@
 		5847E0431DF7B71400995ABE /* DSSkillDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0421DF7B71400995ABE /* DSSkillDetailViewController.m */; };
 		5847E0461DF7B73E00995ABE /* DSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0441DF7B73E00995ABE /* DSTabBarController.m */; };
 		5847E0491DF7B76100995ABE /* DSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0471DF7B76100995ABE /* DSBaseViewController.m */; };
-		5847E04C1DF7B79F00995ABE /* DSSkillHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E04B1DF7B79F00995ABE /* DSSkillHistoryViewController.m */; };
 		5847E04F1DF7B7CB00995ABE /* DSSkillPointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E04E1DF7B7CB00995ABE /* DSSkillPointViewController.m */; };
 		5847E0521DF7E66F00995ABE /* DSBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0511DF7E66F00995ABE /* DSBaseCell.m */; };
 		5847E0581DF7E7B000995ABE /* DSTableDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0571DF7E7B000995ABE /* DSTableDetailCell.m */; };
@@ -36,6 +35,8 @@
 		5847E0911E0214C800995ABE /* DSTableSkillPointSettingUnusedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0901E0214C800995ABE /* DSTableSkillPointSettingUnusedCell.m */; };
 		5847E0941E02341B00995ABE /* DSTableSkillPointSettingFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0931E02341B00995ABE /* DSTableSkillPointSettingFooterCell.m */; };
 		58D40C2A1DFFB79700F9A520 /* DSGlobalSkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D40C291DFFB79700F9A520 /* DSGlobalSkillInfo.m */; };
+		84BBAD481E055420005927E9 /* DSTableAppSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BBAD471E055420005927E9 /* DSTableAppSettingCell.m */; };
+		84BBAD4B1E055686005927E9 /* DSAppSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BBAD4A1E055686005927E9 /* DSAppSettingViewController.m */; };
 		EAE3AC85618B130CE7AE216A /* libPods-dqxSkillSmltr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */; };
 /* End PBXBuildFile section */
 
@@ -56,8 +57,6 @@
 		5847E0451DF7B73E00995ABE /* DSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSTabBarController.h; path = ViewControllers/TabBar/DSTabBarController.h; sourceTree = "<group>"; };
 		5847E0471DF7B76100995ABE /* DSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSBaseViewController.m; path = ViewControllers/Base/DSBaseViewController.m; sourceTree = "<group>"; };
 		5847E0481DF7B76100995ABE /* DSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSBaseViewController.h; path = ViewControllers/Base/DSBaseViewController.h; sourceTree = "<group>"; };
-		5847E04A1DF7B79200995ABE /* DSSkillHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSSkillHistoryViewController.h; path = ViewControllers/SkillHistory/DSSkillHistoryViewController.h; sourceTree = "<group>"; };
-		5847E04B1DF7B79F00995ABE /* DSSkillHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSkillHistoryViewController.m; path = ViewControllers/SkillHistory/DSSkillHistoryViewController.m; sourceTree = "<group>"; };
 		5847E04D1DF7B7BD00995ABE /* DSSkillPointViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSSkillPointViewController.h; path = ViewControllers/SkillPoint/DSSkillPointViewController.h; sourceTree = "<group>"; };
 		5847E04E1DF7B7CB00995ABE /* DSSkillPointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSSkillPointViewController.m; path = ViewControllers/SkillPoint/DSSkillPointViewController.m; sourceTree = "<group>"; };
 		5847E0501DF7E65E00995ABE /* DSBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSBaseCell.h; path = CustomViews/Base/DSBaseCell.h; sourceTree = "<group>"; };
@@ -101,6 +100,10 @@
 		5847E0931E02341B00995ABE /* DSTableSkillPointSettingFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableSkillPointSettingFooterCell.m; path = CustomViews/SkillPoint/DSTableSkillPointSettingFooterCell.m; sourceTree = "<group>"; };
 		58D40C281DFFB77300F9A520 /* DSGlobalSkillInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSGlobalSkillInfo.h; path = Models/DSGlobalSkillInfo.h; sourceTree = "<group>"; };
 		58D40C291DFFB79700F9A520 /* DSGlobalSkillInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSGlobalSkillInfo.m; path = Models/DSGlobalSkillInfo.m; sourceTree = "<group>"; };
+		84BBAD461E0553FC005927E9 /* DSTableAppSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSTableAppSettingCell.h; path = CustomViews/SkillSetting/DSTableAppSettingCell.h; sourceTree = "<group>"; };
+		84BBAD471E055420005927E9 /* DSTableAppSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableAppSettingCell.m; path = CustomViews/SkillSetting/DSTableAppSettingCell.m; sourceTree = "<group>"; };
+		84BBAD491E055686005927E9 /* DSAppSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSAppSettingViewController.h; path = ViewControllers/AppSetting/DSAppSettingViewController.h; sourceTree = "<group>"; };
+		84BBAD4A1E055686005927E9 /* DSAppSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSAppSettingViewController.m; path = ViewControllers/AppSetting/DSAppSettingViewController.m; sourceTree = "<group>"; };
 		CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dqxSkillSmltr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -184,7 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				5847E0531DF7E6E100995ABE /* SkillPoint */,
-				5847E0551DF7E6FA00995ABE /* SkillHistory */,
+				5847E0551DF7E6FA00995ABE /* AppSetting */,
 				5847E0541DF7E6F000995ABE /* SkillDetail */,
 				5847E03B1DF7B47100995ABE /* Base */,
 			);
@@ -216,7 +219,7 @@
 				5847E0371DF7B3E300995ABE /* Base */,
 				5847E0391DF7B41E00995ABE /* SkillPoint */,
 				5847E0381DF7B3ED00995ABE /* SkillDetail */,
-				5847E03A1DF7B43300995ABE /* SkillHistory */,
+				5847E03A1DF7B43300995ABE /* AppSetting */,
 				5847E0331DF7B26100995ABE /* TabBar */,
 			);
 			name = ViewControllers;
@@ -264,13 +267,13 @@
 			name = SkillPoint;
 			sourceTree = "<group>";
 		};
-		5847E03A1DF7B43300995ABE /* SkillHistory */ = {
+		5847E03A1DF7B43300995ABE /* AppSetting */ = {
 			isa = PBXGroup;
 			children = (
-				5847E04A1DF7B79200995ABE /* DSSkillHistoryViewController.h */,
-				5847E04B1DF7B79F00995ABE /* DSSkillHistoryViewController.m */,
+				84BBAD491E055686005927E9 /* DSAppSettingViewController.h */,
+				84BBAD4A1E055686005927E9 /* DSAppSettingViewController.m */,
 			);
-			name = SkillHistory;
+			name = AppSetting;
 			sourceTree = "<group>";
 		};
 		5847E03B1DF7B47100995ABE /* Base */ = {
@@ -328,11 +331,13 @@
 			name = SkillDetail;
 			sourceTree = "<group>";
 		};
-		5847E0551DF7E6FA00995ABE /* SkillHistory */ = {
+		5847E0551DF7E6FA00995ABE /* AppSetting */ = {
 			isa = PBXGroup;
 			children = (
+				84BBAD461E0553FC005927E9 /* DSTableAppSettingCell.h */,
+				84BBAD471E055420005927E9 /* DSTableAppSettingCell.m */,
 			);
-			name = SkillHistory;
+			name = AppSetting;
 			sourceTree = "<group>";
 		};
 		5847E0811DFE97AC00995ABE /* Vendors */ = {
@@ -492,12 +497,14 @@
 				5847E0581DF7E7B000995ABE /* DSTableDetailCell.m in Sources */,
 				5847E0641DF8005000995ABE /* DSSkillDetailItem.m in Sources */,
 				5847E0851DFE980300995ABE /* DZNSegmentedControl.m in Sources */,
+				84BBAD4B1E055686005927E9 /* DSAppSettingViewController.m in Sources */,
 				5847E06D1DF80DE300995ABE /* DSTableSkillPointCellItem.m in Sources */,
 				5847E0881DFE9E7500995ABE /* DSTableSkillPointSettingCell.m in Sources */,
 				5847E0521DF7E66F00995ABE /* DSBaseCell.m in Sources */,
 				5847E04F1DF7B7CB00995ABE /* DSSkillPointViewController.m in Sources */,
 				5847E0611DF7FCD800995ABE /* DSTableHeaderView.m in Sources */,
 				5847E08B1DFEC6C500995ABE /* DSGlobalJobInfo.m in Sources */,
+				84BBAD481E055420005927E9 /* DSTableAppSettingCell.m in Sources */,
 				5847E0801DFE969A00995ABE /* DSSkillPointSettingViewController.m in Sources */,
 				5847E01D1DF7B10E00995ABE /* AppDelegate.m in Sources */,
 				5847E0461DF7B73E00995ABE /* DSTabBarController.m in Sources */,
@@ -506,7 +513,6 @@
 				5847E08E1E00090000995ABE /* DSTableSkillPointSettingCellItem.m in Sources */,
 				5847E07D1DFE45CF00995ABE /* DSJobLevelSettingViewController.m in Sources */,
 				5847E0671DF80D0500995ABE /* DSTableSkillPointCell.m in Sources */,
-				5847E04C1DF7B79F00995ABE /* DSSkillHistoryViewController.m in Sources */,
 				5847E07A1DFE3F4800995ABE /* DSTableJobLevelCellItem.m in Sources */,
 				5847E0491DF7B76100995ABE /* DSBaseViewController.m in Sources */,
 			);

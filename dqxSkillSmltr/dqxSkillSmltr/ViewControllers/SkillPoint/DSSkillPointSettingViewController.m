@@ -15,6 +15,7 @@
 #import "DSTableSkillPointSettingCellItem.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "DSSkillPointSettingViewController.h"
+#import "GoogleMobileAds/GoogleMobileAds.h"
 
 @interface DSSkillPointSettingViewController () <UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource>
 
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView;
 @property (strong, nonatomic) UIStepper *pointStepper;
+@property (strong, nonatomic) GADBannerView  *bannerView;
 
 @end
 
@@ -66,7 +68,7 @@
 
 - (void)setupViews {
     DSGlobalJobInfo *jobInfo = appDelegate.gJobInfo[_jobName];
-    NSString *titleStr = [[NSString alloc] initWithFormat:@"点数:%i", (int)jobInfo.unusePoint/*, (int)jobInfo.totelPoint*/];
+    NSString *titleStr = [[NSString alloc] initWithFormat:@"%@剩余点数:%i", _jobName, (int)jobInfo.unusePoint/*, (int)jobInfo.totelPoint*/];
     self.navigationItem.title = titleStr;
     
     _pointStepper = [[UIStepper alloc] init];
@@ -118,6 +120,37 @@
     [self.view addSubview:_activityIndicatorView];
     [_activityIndicatorView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
+    }];
+    
+    //特技点设定详情页最下方常驻的Google广告
+    NSMutableArray *history;
+    NSString *docPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [docPath stringByAppendingPathComponent:@"RecipeHistory"];
+    
+    history = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    if (ISNULL(history))
+        history = [[NSMutableArray alloc] init];
+    
+    _bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0,
+                                                                  self.view.frame.size.height -
+                                                                  GAD_SIZE_320x50.height,
+                                                                  self.view.frame.size.width,
+                                                                  GAD_SIZE_320x50.height)];
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    //2号横幅广告位
+    self.bannerView.adUnitID = @"ca-app-pub-9308902363520222/7218630190";
+    //Google AdMob提供的测试广告ID
+    //self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+    self.bannerView.rootViewController = self;
+    GADRequest *request = [GADRequest request];
+    //request.testDevices = @[ @"66fc40441247f9df253bbcaa32f528bb" ];
+    [self.bannerView loadRequest:request];
+    
+    [self.view addSubview:_bannerView];
+    [_bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(self.view.frame.size.width));
+        make.height.equalTo(@50);
+        make.bottom.left.equalTo(self.view);
     }];
 }
 
@@ -204,7 +237,9 @@
     }
     DSGlobalJobInfo *jobInfo = [[DSGlobalJobInfo alloc] init];
     jobInfo = appDelegate.gJobInfo[_jobName];
-    view.step.maximumValue = jobInfo.unusePoint + [appDelegate getUsedPointOfCurrentJob:_jobName skillType:_skillType];
+    NSInteger curNeedToFull = CURRENT_MAX_SKILL_POINT_OF_SKILL_TYPE - [appDelegate getUsedPointOfOtherJob:_jobName skillType:_skillType];
+    NSInteger curJobSkillUnusedPoint = jobInfo.unusePoint + [appDelegate getUsedPointOfCurrentJob:_jobName skillType:_skillType];
+    view.step.maximumValue = curNeedToFull > curJobSkillUnusedPoint ? curJobSkillUnusedPoint : curNeedToFull;
     view.step.value = [appDelegate getUsedPointOfCurrentJob:_jobName skillType:_skillType];
     
     return view;
@@ -268,7 +303,7 @@
         [self showHUDWithText:@"技能点数不足！" delay:2];
     }
     
-    NSString *titleStr = [[NSString alloc] initWithFormat:@"剩余点数:%i", (int)jobInfo.unusePoint/*, (int)jobInfo.totelPoint*/];
+    NSString *titleStr = [[NSString alloc] initWithFormat:@"%@剩余点数:%i", _jobName, (int)jobInfo.unusePoint/*, (int)jobInfo.totelPoint*/];
     self.navigationItem.title = titleStr;
     [self updateCurrentView];
 }
@@ -320,6 +355,12 @@
 }
 
 -(void)updateCurrentView{
+    /*//刷新上侧TabBar的点数
+    NSInteger index = _segmentedControl.selectedSegmentIndex;
+    NSInteger point = [appDelegate getUsedPointOfCurrentJob:_jobName skillType:_skillType] + [appDelegate getUsedPointOfOtherJob:_jobName skillType:_skillType];
+    [_segmentedControl setTitle:[NSString stringWithFormat:@"%@(%i)", _skillType, (int)point] forSegmentAtIndex:index];
+    [_segmentedControl updateConstraints];*/
+    //刷新整个表格
     [_tableView reloadData];
 }
 

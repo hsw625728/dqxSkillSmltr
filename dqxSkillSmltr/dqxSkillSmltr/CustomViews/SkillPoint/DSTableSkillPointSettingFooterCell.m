@@ -151,7 +151,7 @@ NSString *const kDSTableSkillPointSettingFooterCellID = @"DSTableSkillPointSetti
         [self.contentView addSubview:stepper];
         [stepper addTarget:father action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
         [stepper mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerY.equalTo(self.contentView);
+            make.top.equalTo(self.contentView);
             make.right.equalTo(self.contentView).offset(-8);
         }];
         stepper;

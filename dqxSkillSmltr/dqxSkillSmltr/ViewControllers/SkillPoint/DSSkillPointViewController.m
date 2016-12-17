@@ -15,11 +15,13 @@
 #import "View+MASAdditions.h"
 #import "DSJobLevelSettingViewController.h"
 #import "DSSkillPointSettingViewController.h"
+#import "GoogleMobileAds/GoogleMobileAds.h"
 
 
 @interface DSSkillPointViewController() <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) GADBannerView  *bannerView;
 
 @end
 
@@ -57,6 +59,37 @@
     
     [self initDatas];
     [self setupViews];
+    
+    //首页最下方常驻的Google广告
+    NSMutableArray *history;
+    NSString *docPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [docPath stringByAppendingPathComponent:@"RecipeHistory"];
+    
+    history = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    if (ISNULL(history))
+        history = [[NSMutableArray alloc] init];
+    
+    _bannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0.0,
+                                                                  self.view.frame.size.height -
+                                                                  GAD_SIZE_320x50.height,
+                                                                  self.view.frame.size.width,
+                                                                  GAD_SIZE_320x50.height)];
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    //1号横幅广告位
+    self.bannerView.adUnitID = @"ca-app-pub-9308902363520222/7218630190";
+    //Google AdMob提供的测试广告ID
+    //self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+    self.bannerView.rootViewController = self;
+    GADRequest *request = [GADRequest request];
+    //request.testDevices = @[ @"66fc40441247f9df253bbcaa32f528bb" ];
+    [self.bannerView loadRequest:request];
+    
+    [self.view addSubview:_bannerView];
+    [_bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(self.view.frame.size.width));
+        make.height.equalTo(@50);
+        make.bottom.left.equalTo(self.view);
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

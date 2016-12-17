@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "dqxSkillSmltr/ViewControllers/SkillPoint/DSSkillPointSettingViewController.m"
-            timestampString = "503656821.545564"
+            timestampString = "503662571.930995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
             landmarkName = "-valueChanged:"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,12 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "dqxSkillSmltr/ViewControllers/SkillPoint/DSSkillPointSettingViewController.m"
-            timestampString = "503656546.226304"
+            timestampString = "503659841.870996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "-tableView:viewForFooterInSection:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "dqxSkillSmltr/ViewControllers/SkillPoint/DSSkillPointSettingViewController.m"
+            timestampString = "503662693.22342"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
+            landmarkName = "-updateCurrentView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

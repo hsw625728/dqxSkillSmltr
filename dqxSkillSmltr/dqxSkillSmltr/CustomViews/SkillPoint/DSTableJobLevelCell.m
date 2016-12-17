@@ -29,7 +29,7 @@ NSString *const kDSTableJobLevelCellID = @"kDSTableJobLevelCellID";
 #pragma mark - Class Method
 
 + (CGFloat)cellHeight {
-    return 48;
+    return 40;
 }
 
 #pragma mark - View Lifecycle
