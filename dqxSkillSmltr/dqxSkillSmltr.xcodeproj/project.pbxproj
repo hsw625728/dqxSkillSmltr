@@ -37,6 +37,7 @@
 		58D40C2A1DFFB79700F9A520 /* DSGlobalSkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D40C291DFFB79700F9A520 /* DSGlobalSkillInfo.m */; };
 		84BBAD481E055420005927E9 /* DSTableAppSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BBAD471E055420005927E9 /* DSTableAppSettingCell.m */; };
 		84BBAD4B1E055686005927E9 /* DSAppSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BBAD4A1E055686005927E9 /* DSAppSettingViewController.m */; };
+		84BBAD4E1E06972B005927E9 /* AppHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BBAD4D1E06972B005927E9 /* AppHelpViewController.m */; };
 		EAE3AC85618B130CE7AE216A /* libPods-dqxSkillSmltr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,8 @@
 		84BBAD471E055420005927E9 /* DSTableAppSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableAppSettingCell.m; path = CustomViews/SkillSetting/DSTableAppSettingCell.m; sourceTree = "<group>"; };
 		84BBAD491E055686005927E9 /* DSAppSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DSAppSettingViewController.h; path = ViewControllers/AppSetting/DSAppSettingViewController.h; sourceTree = "<group>"; };
 		84BBAD4A1E055686005927E9 /* DSAppSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSAppSettingViewController.m; path = ViewControllers/AppSetting/DSAppSettingViewController.m; sourceTree = "<group>"; };
+		84BBAD4C1E069712005927E9 /* AppHelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppHelpViewController.h; path = ViewControllers/AppSetting/AppHelpViewController.h; sourceTree = "<group>"; };
+		84BBAD4D1E06972B005927E9 /* AppHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppHelpViewController.m; path = ViewControllers/AppSetting/AppHelpViewController.m; sourceTree = "<group>"; };
 		CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dqxSkillSmltr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -272,6 +275,8 @@
 			children = (
 				84BBAD491E055686005927E9 /* DSAppSettingViewController.h */,
 				84BBAD4A1E055686005927E9 /* DSAppSettingViewController.m */,
+				84BBAD4C1E069712005927E9 /* AppHelpViewController.h */,
+				84BBAD4D1E06972B005927E9 /* AppHelpViewController.m */,
 			);
 			name = AppSetting;
 			sourceTree = "<group>";
@@ -507,6 +512,7 @@
 				84BBAD481E055420005927E9 /* DSTableAppSettingCell.m in Sources */,
 				5847E0801DFE969A00995ABE /* DSSkillPointSettingViewController.m in Sources */,
 				5847E01D1DF7B10E00995ABE /* AppDelegate.m in Sources */,
+				84BBAD4E1E06972B005927E9 /* AppHelpViewController.m in Sources */,
 				5847E0461DF7B73E00995ABE /* DSTabBarController.m in Sources */,
 				5847E05E1DF7F03200995ABE /* UIImage+Common.m in Sources */,
 				5847E01A1DF7B10E00995ABE /* main.m in Sources */,

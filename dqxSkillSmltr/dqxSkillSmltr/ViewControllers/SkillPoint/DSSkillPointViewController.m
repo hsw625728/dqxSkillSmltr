@@ -76,7 +76,7 @@
                                                                   GAD_SIZE_320x50.height)];
     NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
     //1号横幅广告位
-    self.bannerView.adUnitID = @"ca-app-pub-9308902363520222/7218630190";
+    self.bannerView.adUnitID = @"ca-app-pub-9308902363520222/3901466590";
     //Google AdMob提供的测试广告ID
     //self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
     self.bannerView.rootViewController = self;

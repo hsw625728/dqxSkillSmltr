@@ -34,6 +34,7 @@
 #define DSSkillDetail @"特技列表"
 #define DSAppSetting @"其他设置"
 #define DSJobLevelSetting @"等级设置"
+#define DSAppHelp @"操作示例"
 
 // Hint
 #define DSCancelStr                             @"取消"

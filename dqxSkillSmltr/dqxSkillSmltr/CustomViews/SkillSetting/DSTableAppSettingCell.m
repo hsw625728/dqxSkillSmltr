@@ -92,7 +92,7 @@ NSString *const kDSTableAppSettingCellID = @"kDSTableAppSettingCellID";
         
         label;
     });
-    
+    /*设定界面的右侧小箭头，暂时不用
     UIImageView *forwardView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"forward_info"]];
     [self.contentView addSubview:forwardView];
     [forwardView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -100,7 +100,7 @@ NSString *const kDSTableAppSettingCellID = @"kDSTableAppSettingCellID";
         make.centerY.equalTo(self.contentView);
         make.left.greaterThanOrEqualTo(_titleLabel.mas_right).offset(8);
         make.right.equalTo(self.contentView).offset(-14);
-    }];
+    }];*/
 }
 
 #pragma mark - Public Method

@@ -2,8 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "forward_info.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
       "filename" : "forward_info@2x.png",
       "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

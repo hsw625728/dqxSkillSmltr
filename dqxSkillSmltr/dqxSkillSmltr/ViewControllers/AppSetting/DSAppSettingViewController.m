@@ -12,12 +12,15 @@
 #import "DSAppSettingViewController.h"
 #import "DSTableAppSettingCell.h"
 #import "DSTableHeaderView.h"
+#import "AppHelpViewController.h"
+#import "GoogleMobileAds/GoogleMobileAds.h"
 
 
 @interface DSAppSettingViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) DSTableHeaderView *headerView;
+@property (strong, nonatomic) GADNativeExpressAdView  *expressView;
 
 @end
 
@@ -50,14 +53,47 @@
     
     [self initDatas];
     [self setupViews];
+    
+    //设置界面最下方常驻的Google广告
+    NSMutableArray *history;
+    NSString *docPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [docPath stringByAppendingPathComponent:@"RecipeHistory"];
+    
+    history = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    if (ISNULL(history))
+        history = [[NSMutableArray alloc] init];
+    
+    _expressView = [[GADNativeExpressAdView alloc] initWithFrame:CGRectMake(0.0,
+                                                                            self.view.frame.size.height -
+                                                                            150,
+                                                                            self.view.frame.size.width,
+                                                                            150)];
+    //NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+    //中等高度原生广告位
+    _expressView.adUnitID = @"ca-app-pub-9308902363520222/9808399397";
+    //Google AdMob提供的测试广告ID
+    //_expressView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+    
+    _expressView.rootViewController = self;
+    GADRequest *request = [GADRequest request];
+    //request.testDevices = @[ @"66fc40441247f9df253bbcaa32f528bb" ];
+    [_expressView loadRequest:request];
+    
+    [self.view addSubview:_expressView];
+    [_expressView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(self.view.frame.size.width));
+        make.height.equalTo(@150);
+        make.bottom.left.equalTo(self.view);
+    }];
+
 }
 
 #pragma mark - Private Method
 
 - (void)initDatas {
-    sectionTitles = @[@"帮助"];
-    rowTitles = @[@[@"建议反馈", @"操作说明", @"DQX相关工具", @"版本号"]];
-    rowImageNames = @[@[@"nav_me_normal", @"tab_movie_normal", @"center_setting", @"tab_music_normal"]];
+    sectionTitles = @[@"软件相关", @"操作说明"];
+    rowTitles = @[@[@"版本号：1.0.0", @"DQX相关工具", @"建议反馈邮箱：hsw625728@163.com"], @[@"主界面操作示例", @"等级设置界面操作示例", @"职业技能点洁面操作示例"]];
+    rowImageNames = @[@[@"nav_me_normal", @"center_setting", @"tab_music_normal"], @[@"tab_movie_normal", @"tab_movie_normal", @"tab_movie_normal"]];
 }
 
 - (void)setupViews {
@@ -137,8 +173,35 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
-    //[self.navigationController pushViewController:[[MLBSettingsViewController alloc] init] animated:YES];
+    if (indexPath.section == 0)
+    {
+        switch (indexPath.row)
+        {
+            case 1:
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/zhi-ren-pei-fang-su-caifor-dqx/id1181736107?l=zh&ls=1&mt=8"]];
+                break;
+            default:
+                break;
+        }
+    }
+    else{
+        DSAppHelpViewController *view = [[DSAppHelpViewController alloc] init];
+        switch (indexPath.row) {
+            case 0:
+                [view setHelpImageName:@"help_main"];
+                break;
+            case 1:
+                [view setHelpImageName:@"help_level"];
+                break;
+            case 2:
+                [view setHelpImageName:@"help_point"];
+                break;
+            default:
+                break;
+        }
+        [self.navigationController pushViewController:view animated:YES];
+    }
+    //
 }
 
 @end
