@@ -15,13 +15,17 @@
 #import "View+MASAdditions.h"
 #import "DSJobLevelSettingViewController.h"
 #import "DSSkillPointSettingViewController.h"
-#import "GoogleMobileAds/GoogleMobileAds.h"
-
+//GoogleAdMob
+//#import "GoogleMobileAds/GoogleMobileAds.h"
+//Tencent
+#import "GDTMobBannerView.h" //导入GDTMobBannerView.h头文件
 
 @interface DSSkillPointViewController() <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) GADBannerView  *bannerView;
+//@property (strong, nonatomic) GADBannerView  *bannerView;
+//Tencent
+@property (strong, nonatomic) GDTMobBannerView *bannerView;//声明一个GDTMobBannerView的实例
 
 @end
 
@@ -61,6 +65,7 @@
     [self setupViews];
     
     //首页最下方常驻的Google广告
+    /*
     NSMutableArray *history;
     NSString *docPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *path = [docPath stringByAppendingPathComponent:@"RecipeHistory"];
@@ -85,6 +90,23 @@
     [self.bannerView loadRequest:request];
     
     [self.view addSubview:_bannerView];
+    [_bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(self.view.frame.size.width));
+        make.height.equalTo(@50);
+        make.bottom.left.equalTo(self.view);
+    }];
+     */
+    //Tencent 1 号广告位
+    _bannerView = [[GDTMobBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height -
+                                                                     GDTMOB_AD_SUGGEST_SIZE_320x50.height, self.view.frame.size.width, GDTMOB_AD_SUGGEST_SIZE_320x50.height) appkey:@"1105827469" placementId:@"8050616789207208"];
+    _bannerView.delegate = self; // 设置Delegate
+    _bannerView.currentViewController = self; //设置当前的ViewController
+    _bannerView.interval = 30; //【可选】设置广告轮播时间;范围为30~120秒,0表示不轮 播
+    _bannerView.isGpsOn = NO; //【可选】开启GPS定位;默认关闭
+    _bannerView.showCloseBtn = NO; //【可选】展示关闭按钮;默认显示
+    _bannerView.isAnimationOn = YES; //【可选】开启banner轮播和展现时的动画效果; 默认开启
+    [self.view addSubview:_bannerView]; //添加到当前的view中
+    [_bannerView loadAdAndShow];
     [_bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@(self.view.frame.size.width));
         make.height.equalTo(@50);

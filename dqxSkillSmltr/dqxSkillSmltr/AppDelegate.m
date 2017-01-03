@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "DSTabBarController.h"
 #import "DSGlobalJobInfo.h"
+//Tencent
+#import "GDTTrack.h"
 
 @interface AppDelegate ()
 
@@ -58,6 +60,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    //Tencent
+    [GDTTrack activateApp];
 }
 
 
@@ -92,12 +96,14 @@
         DSGlobalJobInfo *info8 = JOB_SKILL_TYPE_YX;
         DSGlobalJobInfo *info9 = JOB_SKILL_TYPE_MFZS;
         DSGlobalJobInfo *info10 = JOB_SKILL_TYPE_XZ;
+        DSGlobalJobInfo *info11 = JOB_SKILL_TYPE_ZD;
         _gJobInfo = [[NSMutableDictionary alloc] initWithObjectsAndKeys:\
                      info1, @"战士", info2, @"魔法师", \
                      info3, @"僧侣", info4, @"武术家", \
                      info5, @"旅行艺人", info6, @"寻宝家", \
                      info7, @"圣骑士", info8, @"游侠", \
-                     info9, @"魔法战士", info10, @"贤者", nil];
+                     info9, @"魔法战士", info10, @"贤者", \
+                     info11, @"战斗大师", nil];
     }
     
 }

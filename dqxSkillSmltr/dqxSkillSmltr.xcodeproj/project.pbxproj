@@ -34,12 +34,21 @@
 		5847E08E1E00090000995ABE /* DSTableSkillPointSettingCellItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E08D1E00090000995ABE /* DSTableSkillPointSettingCellItem.m */; };
 		5847E0911E0214C800995ABE /* DSTableSkillPointSettingUnusedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0901E0214C800995ABE /* DSTableSkillPointSettingUnusedCell.m */; };
 		5847E0941E02341B00995ABE /* DSTableSkillPointSettingFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847E0931E02341B00995ABE /* DSTableSkillPointSettingFooterCell.m */; };
+		58AE02BA1E0BBBF0006ED7D8 /* libPods-dqxSkillSmltr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */; };
+		58AE02BC1E0BBC4E006ED7D8 /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AE02BB1E0BBC4E006ED7D8 /* libGDTMobSDK.a */; };
+		58AE02BE1E0BBC60006ED7D8 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AE02BD1E0BBC60006ED7D8 /* AdSupport.framework */; };
+		58AE02C01E0BBC68006ED7D8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AE02BF1E0BBC68006ED7D8 /* CoreLocation.framework */; };
+		58AE02C21E0BBC6E006ED7D8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AE02C11E0BBC6E006ED7D8 /* QuartzCore.framework */; };
+		58AE02C41E0BBC74006ED7D8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AE02C31E0BBC74006ED7D8 /* SystemConfiguration.framework */; };
+		58AE02C61E0BBC7E006ED7D8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AE02C51E0BBC7E006ED7D8 /* CoreTelephony.framework */; };
+		58AE02C81E0BBC97006ED7D8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AE02C71E0BBC97006ED7D8 /* Security.framework */; };
+		58AE02CA1E0BBC9E006ED7D8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AE02C91E0BBC9E006ED7D8 /* StoreKit.framework */; };
+		58AE02CC1E0BBCA8006ED7D8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AE02CB1E0BBCA8006ED7D8 /* libz.tbd */; };
 		58D40C2A1DFFB79700F9A520 /* DSGlobalSkillInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D40C291DFFB79700F9A520 /* DSGlobalSkillInfo.m */; };
 		84BBAD481E055420005927E9 /* DSTableAppSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BBAD471E055420005927E9 /* DSTableAppSettingCell.m */; };
 		84BBAD4B1E055686005927E9 /* DSAppSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BBAD4A1E055686005927E9 /* DSAppSettingViewController.m */; };
 		84BBAD4E1E06972B005927E9 /* AppHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BBAD4D1E06972B005927E9 /* AppHelpViewController.m */; };
 		84BBAD501E06BB17005927E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84BBAD4F1E06BB17005927E9 /* GoogleService-Info.plist */; };
-		EAE3AC85618B130CE7AE216A /* libPods-dqxSkillSmltr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +109,21 @@
 		5847E0901E0214C800995ABE /* DSTableSkillPointSettingUnusedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableSkillPointSettingUnusedCell.m; path = CustomViews/SkillPoint/DSTableSkillPointSettingUnusedCell.m; sourceTree = "<group>"; };
 		5847E0921E02340E00995ABE /* DSTableSkillPointSettingFooterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSTableSkillPointSettingFooterCell.h; path = CustomViews/SkillPoint/DSTableSkillPointSettingFooterCell.h; sourceTree = "<group>"; };
 		5847E0931E02341B00995ABE /* DSTableSkillPointSettingFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSTableSkillPointSettingFooterCell.m; path = CustomViews/SkillPoint/DSTableSkillPointSettingFooterCell.m; sourceTree = "<group>"; };
+		58AE02B31E0BA689006ED7D8 /* GDTMobBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobBannerView.h; sourceTree = "<group>"; };
+		58AE02B41E0BA689006ED7D8 /* GDTMobInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobInterstitial.h; sourceTree = "<group>"; };
+		58AE02B51E0BA689006ED7D8 /* GDTNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeAd.h; sourceTree = "<group>"; };
+		58AE02B61E0BA689006ED7D8 /* GDTSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSplashAd.h; sourceTree = "<group>"; };
+		58AE02B71E0BA689006ED7D8 /* GDTTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTTrack.h; sourceTree = "<group>"; };
+		58AE02B81E0BA6DC006ED7D8 /* libGDTMobSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGDTMobSDK.a; path = "../../../../../Volumes/大文件专用目录/广告联盟/腾讯广告联盟/GDT_iOS_SDK/GDT_iOS_SDK/libs/libGDTMobSDK.a"; sourceTree = "<group>"; };
+		58AE02BB1E0BBC4E006ED7D8 /* libGDTMobSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGDTMobSDK.a; sourceTree = "<group>"; };
+		58AE02BD1E0BBC60006ED7D8 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		58AE02BF1E0BBC68006ED7D8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		58AE02C11E0BBC6E006ED7D8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		58AE02C31E0BBC74006ED7D8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		58AE02C51E0BBC7E006ED7D8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		58AE02C71E0BBC97006ED7D8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		58AE02C91E0BBC9E006ED7D8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		58AE02CB1E0BBCA8006ED7D8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		58D40C281DFFB77300F9A520 /* DSGlobalSkillInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSGlobalSkillInfo.h; path = Models/DSGlobalSkillInfo.h; sourceTree = "<group>"; };
 		58D40C291DFFB79700F9A520 /* DSGlobalSkillInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSGlobalSkillInfo.m; path = Models/DSGlobalSkillInfo.m; sourceTree = "<group>"; };
 		84BBAD461E0553FC005927E9 /* DSTableAppSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DSTableAppSettingCell.h; path = CustomViews/SkillSetting/DSTableAppSettingCell.h; sourceTree = "<group>"; };
@@ -117,7 +141,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAE3AC85618B130CE7AE216A /* libPods-dqxSkillSmltr.a in Frameworks */,
+				58AE02CC1E0BBCA8006ED7D8 /* libz.tbd in Frameworks */,
+				58AE02CA1E0BBC9E006ED7D8 /* StoreKit.framework in Frameworks */,
+				58AE02C81E0BBC97006ED7D8 /* Security.framework in Frameworks */,
+				58AE02C61E0BBC7E006ED7D8 /* CoreTelephony.framework in Frameworks */,
+				58AE02C41E0BBC74006ED7D8 /* SystemConfiguration.framework in Frameworks */,
+				58AE02C21E0BBC6E006ED7D8 /* QuartzCore.framework in Frameworks */,
+				58AE02C01E0BBC68006ED7D8 /* CoreLocation.framework in Frameworks */,
+				58AE02BE1E0BBC60006ED7D8 /* AdSupport.framework in Frameworks */,
+				58AE02BC1E0BBC4E006ED7D8 /* libGDTMobSDK.a in Frameworks */,
+				58AE02BA1E0BBBF0006ED7D8 /* libPods-dqxSkillSmltr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +169,11 @@
 		5847E00C1DF7B10E00995ABE = {
 			isa = PBXGroup;
 			children = (
+				58AE02B31E0BA689006ED7D8 /* GDTMobBannerView.h */,
+				58AE02B41E0BA689006ED7D8 /* GDTMobInterstitial.h */,
+				58AE02B51E0BA689006ED7D8 /* GDTNativeAd.h */,
+				58AE02B61E0BA689006ED7D8 /* GDTSplashAd.h */,
+				58AE02B71E0BA689006ED7D8 /* GDTTrack.h */,
 				5847E0171DF7B10E00995ABE /* dqxSkillSmltr */,
 				5847E0161DF7B10E00995ABE /* Products */,
 				3DB2EED422362A939C1C7BE1 /* Pods */,
@@ -368,6 +406,16 @@
 		E11B6DE65C888781723133B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58AE02CB1E0BBCA8006ED7D8 /* libz.tbd */,
+				58AE02C91E0BBC9E006ED7D8 /* StoreKit.framework */,
+				58AE02C71E0BBC97006ED7D8 /* Security.framework */,
+				58AE02C51E0BBC7E006ED7D8 /* CoreTelephony.framework */,
+				58AE02C31E0BBC74006ED7D8 /* SystemConfiguration.framework */,
+				58AE02C11E0BBC6E006ED7D8 /* QuartzCore.framework */,
+				58AE02BF1E0BBC68006ED7D8 /* CoreLocation.framework */,
+				58AE02BD1E0BBC60006ED7D8 /* AdSupport.framework */,
+				58AE02BB1E0BBC4E006ED7D8 /* libGDTMobSDK.a */,
+				58AE02B81E0BA6DC006ED7D8 /* libGDTMobSDK.a */,
 				CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */,
 			);
 			name = Frameworks;
@@ -408,7 +456,7 @@
 					5847E0141DF7B10E00995ABE = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 887CVK63XR;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -645,17 +693,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 887CVK63XR;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = dqxSkillSmltr/dqxSkillSmltr.pch;
 				INFOPLIST_FILE = dqxSkillSmltr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.mengyoutu.skillSmltrForDQX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "18a6906a-7361-4159-bb55-31ab66f35aee";
+				PROVISIONING_PROFILE_SPECIFIER = skillSmltrForDQX;
 			};
 			name = Debug;
 		};
@@ -672,10 +724,14 @@
 				INFOPLIST_FILE = dqxSkillSmltr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.mengyoutu.skillSmltrForDQX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "18a6906a-7361-4159-bb55-31ab66f35aee";
+				PROVISIONING_PROFILE_SPECIFIER = skillSmltrForDQX;
 			};
 			name = Release;
 		};
