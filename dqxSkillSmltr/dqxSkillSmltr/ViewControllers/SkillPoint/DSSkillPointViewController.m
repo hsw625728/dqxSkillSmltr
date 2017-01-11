@@ -103,7 +103,7 @@
     _bannerView.currentViewController = self; //设置当前的ViewController
     _bannerView.interval = 30; //【可选】设置广告轮播时间;范围为30~120秒,0表示不轮 播
     _bannerView.isGpsOn = NO; //【可选】开启GPS定位;默认关闭
-    _bannerView.showCloseBtn = NO; //【可选】展示关闭按钮;默认显示
+    _bannerView.showCloseBtn = YES; //【可选】展示关闭按钮;默认显示
     _bannerView.isAnimationOn = YES; //【可选】开启banner轮播和展现时的动画效果; 默认开启
     [self.view addSubview:_bannerView]; //添加到当前的view中
     [_bannerView loadAdAndShow];

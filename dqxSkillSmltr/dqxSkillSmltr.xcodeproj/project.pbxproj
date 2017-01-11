@@ -48,7 +48,6 @@
 		84BBAD481E055420005927E9 /* DSTableAppSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BBAD471E055420005927E9 /* DSTableAppSettingCell.m */; };
 		84BBAD4B1E055686005927E9 /* DSAppSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BBAD4A1E055686005927E9 /* DSAppSettingViewController.m */; };
 		84BBAD4E1E06972B005927E9 /* AppHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BBAD4D1E06972B005927E9 /* AppHelpViewController.m */; };
-		84BBAD501E06BB17005927E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84BBAD4F1E06BB17005927E9 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,7 +131,6 @@
 		84BBAD4A1E055686005927E9 /* DSAppSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DSAppSettingViewController.m; path = ViewControllers/AppSetting/DSAppSettingViewController.m; sourceTree = "<group>"; };
 		84BBAD4C1E069712005927E9 /* AppHelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppHelpViewController.h; path = ViewControllers/AppSetting/AppHelpViewController.h; sourceTree = "<group>"; };
 		84BBAD4D1E06972B005927E9 /* AppHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppHelpViewController.m; path = ViewControllers/AppSetting/AppHelpViewController.m; sourceTree = "<group>"; };
-		84BBAD4F1E06BB17005927E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBCF237399FB5CB14169E76F /* libPods-dqxSkillSmltr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dqxSkillSmltr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -192,7 +190,6 @@
 		5847E0171DF7B10E00995ABE /* dqxSkillSmltr */ = {
 			isa = PBXGroup;
 			children = (
-				84BBAD4F1E06BB17005927E9 /* GoogleService-Info.plist */,
 				5847E0811DFE97AC00995ABE /* Vendors */,
 				5847E0311DF7B18D00995ABE /* Models */,
 				5847E0301DF7B18500995ABE /* CustomViews */,
@@ -484,7 +481,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5847E0281DF7B10E00995ABE /* LaunchScreen.storyboard in Resources */,
-				84BBAD501E06BB17005927E9 /* GoogleService-Info.plist in Resources */,
 				5847E0251DF7B10E00995ABE /* Assets.xcassets in Resources */,
 				5847E0231DF7B10E00995ABE /* Main.storyboard in Resources */,
 			);
@@ -693,8 +689,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = 887CVK63XR;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = dqxSkillSmltr/dqxSkillSmltr.pch;
 				INFOPLIST_FILE = dqxSkillSmltr/Info.plist;
@@ -706,8 +702,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.mengyoutu.skillSmltrForDQX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "18a6906a-7361-4159-bb55-31ab66f35aee";
-				PROVISIONING_PROFILE_SPECIFIER = skillSmltrForDQX;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};

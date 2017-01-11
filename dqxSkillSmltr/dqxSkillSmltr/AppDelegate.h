@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "DSGlobalJobInfo.h"
 #import "DSGlobalSkillInfo.h"
+#import "GDTSplashAd.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,GDTSplashAdDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) GDTSplashAd *splash;
 @property (nonatomic, copy) NSMutableDictionary *gJobInfo;
 @property (nonatomic, copy, readonly) DSGlobalSkillInfo *gSkillInfo;
 
