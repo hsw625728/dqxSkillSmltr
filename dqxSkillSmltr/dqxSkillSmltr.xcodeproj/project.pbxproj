@@ -452,7 +452,6 @@
 				TargetAttributes = {
 					5847E0141DF7B10E00995ABE = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 887CVK63XR;
 						ProvisioningStyle = Manual;
 					};
 				};

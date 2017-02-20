@@ -25,7 +25,9 @@
     [self initData];
     
     //创建主窗口
-    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    CGRect rect = [UIScreen mainScreen].bounds;
+    _window = [[UIWindow alloc] initWithFrame:rect];
     _window.backgroundColor = [UIColor whiteColor];
     [_window makeKeyAndVisible];
     
@@ -38,6 +40,7 @@
     _window.rootViewController = [[DSTabBarController alloc] init];
     
     //Tencent 6 号广告位  开屏广告
+    /*
     GDTSplashAd *splash = [[GDTSplashAd alloc] initWithAppkey:@"1105827469" placementId:@"6080210894263517"];
     splash.delegate = self; //设置代理
     //根据iPhone设备不同设置不同背景图
@@ -46,7 +49,7 @@
     //[可选]拉取并展示全屏开屏广告
     [splash loadAdAndShowInWindow:self.window];
     self.splash = splash;
-    
+    */
     return YES;
 }
 
@@ -85,6 +88,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    [self.splash loadAdAndShowInWindow:self.window];
 }
 
 
@@ -127,15 +131,22 @@
         DSGlobalJobInfo *info9 = JOB_SKILL_TYPE_MFZS;
         DSGlobalJobInfo *info10 = JOB_SKILL_TYPE_XZ;
         DSGlobalJobInfo *info11 = JOB_SKILL_TYPE_ZD;
+        DSGlobalJobInfo *info12 = JOB_SKILL_TYPE_MX;
         _gJobInfo = [[NSMutableDictionary alloc] initWithObjectsAndKeys:\
                      info1, @"战士", info2, @"魔法师", \
                      info3, @"僧侣", info4, @"武术家", \
                      info5, @"旅行艺人", info6, @"寻宝家", \
                      info7, @"圣骑士", info8, @"游侠", \
                      info9, @"魔法战士", info10, @"贤者", \
-                     info11, @"战斗大师", nil];
+                     info11, @"战斗大师", info12, @"超级明星", nil];
     }
     
+    //添加职业要在这里添加缓存中的新职业信息。
+    //添加超级明星职业
+    if ([_gJobInfo count] < 12){
+        DSGlobalJobInfo *info12 = JOB_SKILL_TYPE_MX;
+        [_gJobInfo setObject:info12 forKey:@"超级明星"];
+    }
 }
 
 -(NSMutableDictionary*)getPointStateOfOtherJob:(NSString*)jobName skillType:(NSString*)skillType{
