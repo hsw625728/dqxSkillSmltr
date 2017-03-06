@@ -159,6 +159,7 @@
     }];
      */
     //Tencent 2 号广告位
+    /*
     _bannerView = [[GDTMobBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height -
                                                                      GDTMOB_AD_SUGGEST_SIZE_320x50.height, self.view.frame.size.width, GDTMOB_AD_SUGGEST_SIZE_320x50.height) appkey:@"1105827469" placementId:@"2000016779109390"];
     _bannerView.delegate = self; // 设置Delegate
@@ -174,6 +175,7 @@
         make.height.equalTo(@50);
         make.bottom.left.equalTo(self.view);
     }];
+     */
     
 }
 
